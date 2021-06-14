@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+
 import "./Home.scss";
 import currencyChange from "../../assets/img/currency-exchange-mobile.png";
 

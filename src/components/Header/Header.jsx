@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logoTipo from "../../assets/img/logoTipo.png";
 import "./Header.scss";
@@ -7,12 +8,20 @@ export const Header = () => {
   return (
     <header className="header">
       <figure className="header__container-img">
-        <img className="header__container-img--img" src={logoTipo} alt="logo" />
+        <Link to="/">
+          <img
+            className="header__container-img--img"
+            src={logoTipo}
+            alt="logo"
+          />
+        </Link>
       </figure>
       <nav className="header__nav">
-        <button className="header__nav--login" type="button">
-          Login
-        </button>
+        <Link to="/login">
+          <button className="header__nav--login" type="button">
+            Login
+          </button>
+        </Link>
         <button className="header__nav--sign-up" type="button">
           Sign Up
         </button>

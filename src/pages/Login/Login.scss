@@ -1,0 +1,65 @@
+@import "../../assets/scss/reset";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.login {
+  width: 90%;
+  min-width: 280px;
+  max-width: 1024px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__container-img {
+    margin-top: 20px;
+    width: 186px;
+    height: 186px;
+
+    &--img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &--title {
+    color: $color-text-dark;
+    margin: 24px 0 28px 0;
+    @include titleMobile;
+  }
+
+  &__container-form {
+    width: 100%;
+    min-width: 280px;
+    max-width: 500px;
+    height: auto;
+
+    &--form {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      & label {
+        color: $color-text-dark;
+        margin-bottom: 4px;
+        @include subTitleMobile;
+      }
+
+      & input {
+        width: 100%;
+        height: 28px;
+        margin-bottom: 4px;
+        background-color: $color-dark-secondary;
+        border: none;
+        padding: 0 15px;
+        @include paragraphsMobile;
+        &::placeholder {
+          color: $color-light-primary;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
