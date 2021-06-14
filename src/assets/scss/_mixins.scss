@@ -14,7 +14,7 @@
   font-weight: 500;
 }
 
-@mixin ParagraphsMobile {
+@mixin paragraphsMobile {
   font-family: $fontSecondary;
   font-size: $sizeParagraphsMobile;
   font-weight: 400;
@@ -34,7 +34,7 @@
   font-size: $sizeSubtitleTablet;
 }
 
-@mixin ParagraphsTablet {
+@mixin paragraphsTablet {
   font-family: $fontSecondary;
   font-size: $sizeParagraphsTablet;
   font-weight: 400;
@@ -54,7 +54,7 @@
   font-size: $sizeSubtitleDestktop;
 }
 
-@mixin ParagraphsDesktop {
+@mixin paragraphsDesktop {
   font-family: $fontSecondary;
   font-size: $sizeParagraphsDestktop;
   font-weight: 400;
