@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import { Home } from "../../pages/Home";
 
@@ -6,8 +7,10 @@ import "../../assets/css/App.css";
 
 export const App = () => {
   return (
-    <>
-      <Home />
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+      </Switch>
+    </BrowserRouter>
   );
 };
