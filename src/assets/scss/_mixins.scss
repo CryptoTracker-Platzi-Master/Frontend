@@ -1,0 +1,61 @@
+@import "./variables";
+
+// --------------MObile------------------
+
+@mixin titleMobile {
+  font-family: $fontTitle;
+  font-weight: 600;
+  font-size: $sizeTitleMobile;
+}
+
+@mixin subTitleMobile {
+  font-family: $fontSecondary;
+  font-size: $sizeSubtitleMobile;
+  font-weight: 500;
+}
+
+@mixin ParagraphsMobile {
+  font-family: $fontSecondary;
+  font-size: $sizeParagraphsMobile;
+  font-weight: 400;
+}
+
+// -----------------Tablet------------------
+
+@mixin titleTablet {
+  font-family: $fontTitle;
+  font-weight: 600;
+  font-size: $sizeTitleTablet;
+}
+
+@mixin subTitleTablet {
+  font-family: $fontSecondary;
+  font-weight: 500;
+  font-size: $sizeSubtitleTablet;
+}
+
+@mixin ParagraphsTablet {
+  font-family: $fontSecondary;
+  font-size: $sizeParagraphsTablet;
+  font-weight: 400;
+}
+
+// --------------Desktop------------------
+
+@mixin titleDesktop {
+  font-family: $fontTitle;
+  font-weight: 600;
+  font-size: $sizeTitleDestktop;
+}
+
+@mixin subTitleDesktop {
+  font-family: $fontSecondary;
+  font-weight: 500;
+  font-size: $sizeSubtitleDestktop;
+}
+
+@mixin ParagraphsDesktop {
+  font-family: $fontSecondary;
+  font-size: $sizeParagraphsDestktop;
+  font-weight: 400;
+}

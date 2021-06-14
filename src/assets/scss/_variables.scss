@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&display=swap");
+
+// Colors
+$color-light-primary: #f2f4f4;
+$color-dark-primary: #1a233a;
+$color-dark-secondary: #344775;
+$color-primary: #f7931a;
+$color-secondary: #3ad475;
+$color-tertiary: #ff5b5c;
+$color-text-dark: #bdd1f8;
+
+//Fuentes
+
+// Size
+$base: 0.4rem;
+
+// Size Destktop
+$sizeTitleDestktop: $base * 13;
+$sizeSubtitleDestktop: $base * 10;
+$sizeParagraphsDestktop: $base * 8;
+
+// Tablet
+$sizeTitleTablet: $base * 9;
+$sizeSubtitleTablet: $base * 5;
+$sizeParagraphsTablet: $base * 4;
+
+//Mobile
+$sizeTitleMobile: $base * 6;
+$sizeSubtitleMobile: $base * 5;
+$sizeParagraphsMobile: $base * 4;
+
+// Font Family
+
+$fontTitle: "Montserrat", sans-serif;
+$fontSecondary: "Roboto", sans-serif;
