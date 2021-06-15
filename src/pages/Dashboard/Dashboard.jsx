@@ -9,7 +9,7 @@ export const Dashboard = () => {
     return (
       <div className="dashboard__wrap-card--card">
         <button className="dashboard__wrap-card--card--btn-plus" type="button">
-          <i class="fas fa-plus-circle"></i>
+          <i className="fas fa-plus-circle"></i>
         </button>
         <div className="dashboard__wrap-card--card__title">
           <figure className="dashboard__wrap-card--card__title--container-img">

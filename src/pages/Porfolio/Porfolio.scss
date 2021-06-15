@@ -1,0 +1,70 @@
+@import "../../assets/scss/reset";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.porfolio {
+  width: 90%;
+  min-width: 280px;
+  max-width: 1024px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &--btn-dashboard {
+    width: 133px;
+    height: 30px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 20px;
+    background-color: $color-light-primary;
+    color: $color-dark-primary;
+    align-self: flex-end;
+    @include subTitleMobile;
+  }
+
+  &__card-balance {
+    width: 90%;
+    height: auto;
+    min-width: 280px;
+    max-width: 400px;
+    background-color: $color-dark-secondary;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 20px;
+
+    &--title {
+      color: $color-text-dark;
+      @include titleMobile;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    & h4 {
+      color: $color-text-dark;
+      @include paragraphsMobile;
+      margin-bottom: 6px;
+
+      & .currency,
+      & .percentage {
+        margin: 0 4px;
+      }
+    }
+  }
+  &__wrap-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &--card {
+      width: 90%;
+      min-width: 280px;
+      max-width: 360px;
+      background-color: $color-dark-secondary;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+  }
+}

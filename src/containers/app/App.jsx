@@ -6,6 +6,7 @@ import { Login } from "../../pages/Login";
 import { SignUp } from "../../pages/SignUp";
 import { Authentication } from "../../pages/Authentication";
 import { Dashboard } from "../../pages/Dashboard";
+import { Porfolio } from "../../pages/Porfolio";
 
 import "../../assets/css/App.css";
 
@@ -18,6 +19,7 @@ export const App = () => {
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/2fa" component={Authentication} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/porfolio" component={Porfolio} />
       </Switch>
     </BrowserRouter>
   );
