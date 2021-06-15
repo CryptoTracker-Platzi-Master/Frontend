@@ -34,15 +34,19 @@
   &__wrap-card {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 
     &--card {
       width: 90%;
       min-width: 280px;
+      max-width: 320px;
       background-color: $color-dark-secondary;
       border-radius: 12px;
       padding: 16px;
       position: relative;
+      display: flex;
+      flex-direction: column;
 
       &--btn-plus {
         background-color: transparent;
@@ -54,12 +58,40 @@
         right: 12px;
       }
 
-      &--title {
-        width: 50%;
+      &__title {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--container-img {
+          width: 50px;
+          height: 50px;
+
+          &--img {
+            width: 100%;
+            height: 100%;
+          }
+        }
 
         & h3 {
           color: $color-text-dark;
+          margin-left: 8px;
           @include subTitleMobile;
+        }
+      }
+
+      &__description {
+        margin-top: 12px;
+        & h4 {
+          color: $color-text-dark;
+          @include paragraphsMobile;
+          margin: 6px;
+
+          & .currency,
+          .percentage-24h {
+            margin: 0 6px;
+          }
         }
       }
     }
