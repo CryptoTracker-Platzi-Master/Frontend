@@ -22,9 +22,11 @@ export const Header = () => {
             Login
           </button>
         </Link>
-        <button className="header__nav--sign-up" type="button">
-          Sign Up
-        </button>
+        <Link to="/sign-up">
+          <button className="header__nav--sign-up" type="button">
+            Sign Up
+          </button>
+        </Link>
       </nav>
     </header>
   );

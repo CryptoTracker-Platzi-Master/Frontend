@@ -2,7 +2,7 @@
 @import "../../assets/scss/variables";
 @import "../../assets/scss/mixins";
 
-.login {
+.sign-up {
   width: 90%;
   min-width: 280px;
   max-width: 1024px;
@@ -14,8 +14,8 @@
 
   &__container-img {
     margin-top: 20px;
-    width: 186px;
-    height: 186px;
+    width: 96px;
+    height: 96px;
 
     &--img {
       width: 100%;
