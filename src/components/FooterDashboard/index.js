@@ -1,0 +1,1 @@
+export { FooterDashboard } from "./FooterDashboard";

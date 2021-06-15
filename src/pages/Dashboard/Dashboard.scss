@@ -1,0 +1,67 @@
+@import "../../assets/scss/reset";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.dashboard {
+  width: 90%;
+  min-width: 280px;
+  max-width: 1024px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &--btn-porfolio {
+    width: 133px;
+    height: 30px;
+    border: none;
+    border-radius: 12px;
+    margin-top: 20px;
+    background-color: $color-light-primary;
+    color: $color-dark-primary;
+    align-self: flex-end;
+    @include subTitleMobile;
+  }
+
+  &--title {
+    color: $color-text-dark;
+    margin-top: 20px;
+    margin-bottom: 32px;
+    @include titleMobile;
+  }
+
+  &__wrap-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &--card {
+      width: 90%;
+      min-width: 280px;
+      background-color: $color-dark-secondary;
+      border-radius: 12px;
+      padding: 16px;
+      position: relative;
+
+      &--btn-plus {
+        background-color: transparent;
+        border: none;
+        color: $color-primary;
+        font-size: 2rem;
+        position: absolute;
+        top: 8px;
+        right: 12px;
+      }
+
+      &--title {
+        width: 50%;
+
+        & h3 {
+          color: $color-text-dark;
+          @include subTitleMobile;
+        }
+      }
+    }
+  }
+}

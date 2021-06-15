@@ -1,0 +1,24 @@
+@import "../../assets/scss/reset";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.footer-dashboard {
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-dark-secondary;
+  position: fixed;
+  bottom: 0;
+
+  &__container-img {
+    width: 240px;
+    height: 46px;
+
+    &--img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
