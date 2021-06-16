@@ -57,24 +57,20 @@ export const Porfolio = () => {
         <div className="porfolio__wrap-cards__card__revenues">
           <div className="porfolio__wrap-cards__card__revenues--buy">
             <h4>
-              <span>
-                <i className="fas fa-long-arrow-alt-up "></i>
-              </span>
-              Sell at a profit in
+              <i className="fas fa-long-arrow-alt-up icon-buy"></i>
+              Sell at a profit
             </h4>
             <p>
-              <span>$</span>200
+              <span>$</span> 200
             </p>
           </div>
           <div className="porfolio__wrap-cards__card__revenues--sell">
             <h4>
-              <span>
-                <i className="fas fa-long-arrow-alt-down icon-sell"></i>
-              </span>
-              sell at a loss in
+              <i className="fas fa-long-arrow-alt-down icon-sell"></i>
+              sell at a loss
             </h4>
             <p>
-              <span>$</span>200
+              <span>$</span> 200
             </p>
           </div>
         </div>

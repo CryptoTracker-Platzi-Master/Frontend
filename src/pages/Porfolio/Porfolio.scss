@@ -46,6 +46,10 @@
       @include paragraphsMobile;
       margin-bottom: 6px;
 
+      & span {
+        color: $color-light-primary;
+      }
+
       & .currency,
       & .percentage {
         margin: 0 4px;
@@ -139,6 +143,22 @@
           & h4 {
             color: $color-text-dark;
             margin: 16px 0 6px 0;
+            @include paragraphsMobile;
+
+            & .icon-buy {
+              color: $color-secondary;
+              font-size: 2rem;
+              margin-right: 4px;
+            }
+            & .icon-sell {
+              color: $color-tertiary;
+              font-size: 2rem;
+              margin-right: 4px;
+            }
+          }
+          & p {
+            color: $color-text-dark;
+            text-align: center;
             @include paragraphsMobile;
           }
         }
