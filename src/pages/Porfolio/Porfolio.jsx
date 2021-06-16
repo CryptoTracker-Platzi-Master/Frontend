@@ -7,38 +7,42 @@ import { FooterDashboard } from "../../components/FooterDashboard";
 export const Porfolio = () => {
   const cardsPorfolio = () => {
     return (
-      <div className="porfolio__wrap-cards--card">
-        <button type="button">
+      <div className="porfolio__wrap-cards__card">
+        <button type="button" className="porfolio__wrap-cards__card--btn-edit">
           <i className="far fa-edit"></i>
         </button>
-        <button type="button">
+        <button
+          type="button"
+          className="porfolio__wrap-cards__card--btn-delete"
+        >
           <i className="far fa-trash-alt"></i>
         </button>
-        <div>
-          <figure>
+        <div className="porfolio__wrap-cards__card__head">
+          <figure className="porfolio__wrap-cards__card__head--contariner-img">
             <img
+              className="porfolio__wrap-cards__card__head--contariner-img--img"
               src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
               alt=""
             />
           </figure>
-          <h3>
+          <h3 className="porfolio__wrap-cards__card__head--title">
             Bitcoin - <span>BTC</span>
-            <span>
-              Price: $<span>36000</span>
-            </span>
           </h3>
+          <p>
+            $ <span>36000</span>
+          </p>
         </div>
-        <div>
+        <div className="porfolio__wrap-cards__card__description">
           <h4>
             Purchase price: <span>$</span>
             <span>36000</span>
           </h4>
           <h4>
-            Quantity:<span>2</span>
+            Quantity: <span>2</span>
             <span>BTC</span>
           </h4>
           <h4>
-            Amount invested:<span>$</span>
+            Amount invested: <span>$</span>
             <span>500</span>
           </h4>
           <h4>
@@ -50,27 +54,29 @@ export const Porfolio = () => {
             <span>100</span>
           </h4>
         </div>
-        <div>
-          <h4>
-            <span>
-              <i className="fas fa-long-arrow-alt-up"></i>
-            </span>
-            Sell at a profit in
-          </h4>
-          <p>
-            <span>$</span>200
-          </p>
-        </div>
-        <div>
-          <h4>
-            <span>
-              <i className="fas fa-long-arrow-alt-down"></i>
-            </span>
-            sell at a loss in
-          </h4>
-          <p>
-            <span>$</span>200
-          </p>
+        <div className="porfolio__wrap-cards__card__revenues">
+          <div className="porfolio__wrap-cards__card__revenues--buy">
+            <h4>
+              <span>
+                <i className="fas fa-long-arrow-alt-up "></i>
+              </span>
+              Sell at a profit in
+            </h4>
+            <p>
+              <span>$</span>200
+            </p>
+          </div>
+          <div className="porfolio__wrap-cards__card__revenues--sell">
+            <h4>
+              <span>
+                <i className="fas fa-long-arrow-alt-down icon-sell"></i>
+              </span>
+              sell at a loss in
+            </h4>
+            <p>
+              <span>$</span>200
+            </p>
+          </div>
         </div>
       </div>
     );
