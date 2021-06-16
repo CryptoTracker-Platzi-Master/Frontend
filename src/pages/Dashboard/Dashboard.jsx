@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+
 import "./Dashboard.scss";
 
 import { HeaderDashboard } from "../../components/HeaderDashboard";
@@ -47,7 +49,11 @@ export const Dashboard = () => {
     <>
       <HeaderDashboard />
       <main className="dashboard">
-        <button className="dashboard--btn-porfolio">My Porfolio</button>
+        <Link to="/porfolio" className="dashboard__link-porfolio">
+          <button className="dashboard__link-porfolio--btn-porfolio">
+            My Porfolio
+          </button>
+        </Link>
         <h2 className="dashboard--title">All Cryptocurrencies</h2>
         <div className="dashboard__wrap-card">{cards()}</div>
       </main>

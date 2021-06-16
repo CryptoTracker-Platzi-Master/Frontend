@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+
 import "./Porfolio.scss";
 
 import { HeaderDashboard } from "../../components/HeaderDashboard";
@@ -81,7 +83,11 @@ export const Porfolio = () => {
     <>
       <HeaderDashboard />
       <main className="porfolio">
-        <button className="porfolio--btn-dashboard">Dashboard</button>
+        <Link to="dashboard" className="porfolio__link-dasboard">
+          <button className="porfolio__link-dasboard--btn-dashboard">
+            Dashboard
+          </button>
+        </Link>
         <div className="porfolio__card-balance">
           <h2 className="porfolio__card-balance--title">Balance</h2>
           <h4>

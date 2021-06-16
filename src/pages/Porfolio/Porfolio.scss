@@ -12,16 +12,19 @@
   flex-direction: column;
   align-items: center;
 
-  &--btn-dashboard {
-    width: 133px;
-    height: 30px;
-    border: none;
-    border-radius: 12px;
-    margin-top: 20px;
-    background-color: $color-light-primary;
-    color: $color-dark-primary;
+  &__link-dasboard {
     align-self: flex-end;
-    @include subTitleMobile;
+
+    &--btn-dashboard {
+      width: 133px;
+      height: 30px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+      background-color: $color-light-primary;
+      color: $color-dark-primary;
+      @include subTitleMobile;
+    }
   }
 
   &__card-balance {
@@ -113,7 +116,7 @@
 
         & p {
           width: 25%;
-          color: $color-text-dark;
+          color: $color-light-primary;
           @include paragraphsMobile;
         }
       }
@@ -157,7 +160,8 @@
             }
           }
           & p {
-            color: $color-text-dark;
+            color: $color-light-primary;
+
             text-align: center;
             @include paragraphsMobile;
           }

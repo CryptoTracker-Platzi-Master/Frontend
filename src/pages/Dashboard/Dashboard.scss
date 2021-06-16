@@ -12,16 +12,18 @@
   flex-direction: column;
   align-items: center;
 
-  &--btn-porfolio {
-    width: 133px;
-    height: 30px;
-    border: none;
-    border-radius: 12px;
-    margin-top: 20px;
-    background-color: $color-light-primary;
-    color: $color-dark-primary;
+  &__link-porfolio {
     align-self: flex-end;
-    @include subTitleMobile;
+    &--btn-porfolio {
+      width: 133px;
+      height: 30px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+      background-color: $color-light-primary;
+      color: $color-dark-primary;
+      @include subTitleMobile;
+    }
   }
 
   &--title {
@@ -87,6 +89,10 @@
           color: $color-text-dark;
           @include paragraphsMobile;
           margin: 6px;
+
+          & span {
+            color: $color-light-primary;
+          }
 
           & .currency,
           .percentage-24h {
