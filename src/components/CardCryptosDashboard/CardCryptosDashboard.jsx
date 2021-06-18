@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import "./CardCryptosDashboard.scss";
 
 export const CardCryptosDashboard = ({ cryptos }) => {
@@ -49,6 +50,7 @@ export const CardCryptosDashboard = ({ cryptos }) => {
           </div>
         </div>
       ))}
+      {ReactDOM.createPortal(<h1>modal</h1>, document.getElementById("modal"))}
     </div>
   );
 };
