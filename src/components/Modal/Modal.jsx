@@ -1,15 +1,23 @@
 import React, { Fragment } from "react";
 import "./Modal.scss";
 
-export const Modal = () => {
+export const Modal = ({ setModal, title }) => {
+  const closeModal = () => {
+    setModal(false);
+  };
+
   return (
     <>
       <div className="container-modal">
         <div className="container-modal__modal">
-          <button type="button" className="container-modal__modal--btn-close">
-            <i class="fas fa-window-close"></i>
+          <button
+            onClick={closeModal}
+            type="button"
+            className="container-modal__modal--btn-close"
+          >
+            <i className="fas fa-window-close"></i>
           </button>
-          <h2 className="container-modal__modal--title">Crypptocurrencies</h2>
+          <h2 className="container-modal__modal--title">{title}</h2>
           <div className="container-modal__modal--head-crypto">
             <figure className="container-modal__modal--head-crypto--container-img">
               <img
@@ -48,7 +56,11 @@ export const Modal = () => {
                 <button type="button" className="btn-add">
                   Add
                 </button>
-                <button type="button" className="btn-cancel">
+                <button
+                  onClick={closeModal}
+                  type="button"
+                  className="btn-cancel"
+                >
                   Cancel
                 </button>
               </div>
