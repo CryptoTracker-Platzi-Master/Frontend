@@ -17,10 +17,15 @@ export const CardsCryptosPorfolio = () => {
         onClick={openModal}
         type="button"
         className="porfolio__wrap-cards__card--btn-edit"
+        aria-label="Button edit"
       >
         <i className="far fa-edit"></i>
       </button>
-      <button type="button" className="porfolio__wrap-cards__card--btn-delete">
+      <button
+        type="button"
+        className="porfolio__wrap-cards__card--btn-delete"
+        aria-label="Button delete"
+      >
         <i className="far fa-trash-alt"></i>
       </button>
       <div className="porfolio__wrap-cards__card__head">

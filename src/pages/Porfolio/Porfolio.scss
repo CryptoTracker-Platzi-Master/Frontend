@@ -14,17 +14,16 @@
 
   &__link-dasboard {
     align-self: flex-end;
-
-    &--btn-dashboard {
-      width: 133px;
-      height: 30px;
-      border: none;
-      border-radius: 12px;
-      margin-top: 20px;
-      background-color: $color-light-primary;
-      color: $color-dark-primary;
-      @include subTitleMobile;
-    }
+    margin-top: 20px;
+    width: 133px;
+    height: 30px;
+    border-radius: 12px;
+    background-color: $color-light-primary;
+    color: $color-dark-primary;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 2px;
+    @include subTitleMobile;
   }
 
   &__card-balance {

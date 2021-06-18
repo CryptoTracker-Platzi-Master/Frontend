@@ -20,9 +20,7 @@ export const Dashboard = () => {
       <HeaderDashboard />
       <main className="dashboard">
         <Link to="/porfolio" className="dashboard__link-porfolio">
-          <button className="dashboard__link-porfolio--btn-porfolio">
-            My Porfolio
-          </button>
+          My Porfolio
         </Link>
         <h2 className="dashboard--title">All Cryptocurrencies</h2>
         <CardCryptosDashboard cryptos={cryptos} />

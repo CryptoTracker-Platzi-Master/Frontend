@@ -18,9 +18,7 @@ export const HeaderDashboard = () => {
       </p>
       <nav className="header-dashboard__nav">
         <Link to="#">
-          <button className="header-dashboard__nav--logout" type="button">
-            <i className="fas fa-sign-out-alt header-dashboard__nav--logout-icon"></i>
-          </button>
+          <i className="fas fa-sign-out-alt header-dashboard__nav--logout"></i>
         </Link>
       </nav>
     </header>

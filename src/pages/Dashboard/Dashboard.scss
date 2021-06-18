@@ -15,16 +15,15 @@
   &__link-porfolio {
     align-self: flex-end;
     margin-top: 20px;
-    &--btn-porfolio {
-      width: 133px;
-      height: 30px;
-      border: none;
-      border-radius: 12px;
-      background-color: $color-light-primary;
-      color: $color-dark-primary;
-      cursor: pointer;
-      @include subTitleMobile;
-    }
+    width: 133px;
+    height: 30px;
+    border-radius: 12px;
+    background-color: $color-light-primary;
+    color: $color-dark-primary;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 2px;
+    @include subTitleMobile;
   }
 
   &--title {

@@ -19,6 +19,7 @@ export const CardCryptosDashboard = ({ cryptos }) => {
             onClick={openModal}
             className="dashboard__wrap-card--card--btn-plus"
             type="button"
+            aria-label="Button addd crypto"
           >
             <i className="fas fa-plus-circle"></i>
           </button>

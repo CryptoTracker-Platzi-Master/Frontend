@@ -13,9 +13,7 @@ export const Porfolio = () => {
       <HeaderDashboard />
       <main className="porfolio">
         <Link to="dashboard" className="porfolio__link-dasboard">
-          <button className="porfolio__link-dasboard--btn-dashboard">
-            Dashboard
-          </button>
+          Dashboard
         </Link>
         <div className="porfolio__card-balance">
           <h2 className="porfolio__card-balance--title">Balance</h2>
