@@ -23,12 +23,22 @@ export const SignUp = () => {
           <form className="sign-up__container-form--form" action="form-sign-up">
             <label htmlFor="first-name">First Name</label>
             <input type="text" id="first-name" placeholder="Juanito" />
+
             <label htmlFor="last-name">Last Name</label>
             <input type="text" id="last-name" placeholder="Smith" />
+
             <label htmlFor="email">Email</label>
             <input type="email" id="email" placeholder="example@example.com" />
+
             <label htmlFor="password">Password</label>
             <input type="password" id="password" placeholder="password" />
+
+            <label htmlFor="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              placeholder="password"
+            />
           </form>
         </div>
       </main>
