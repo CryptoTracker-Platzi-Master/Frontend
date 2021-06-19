@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import "./Modal.scss";
 
+import { numberWithCommas } from "../../utils/numberWithCommas";
+
 export const Modal = ({ setModal, title, currentCrypto }) => {
   const closeModal = () => {
     setModal(false);
@@ -25,7 +27,8 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
             <h3>
               {currentCrypto.name}{" "}
               <span>
-                Price $: <span>{currentCrypto.current_price}</span>
+                Price:{" "}
+                <span>{numberWithCommas(currentCrypto.current_price)} USD</span>
               </span>
             </h3>
           </div>

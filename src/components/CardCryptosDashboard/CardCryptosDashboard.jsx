@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./CardCryptosDashboard.scss";
 
 import { Modal } from "../../containers/Modal";
+import { numberWithCommas } from "../../utils/numberWithCommas";
 
 export const CardCryptosDashboard = ({ cryptos }) => {
   const [modal, setModal] = useState(false);
@@ -42,16 +43,15 @@ export const CardCryptosDashboard = ({ cryptos }) => {
               Market Cap Rank: <span>{crypto.market_cap_rank}</span>
             </h4>
             <h4>
-              Price: <span className="currency">$</span>
-              <span>{crypto.current_price}</span>
+              Price: <span>{numberWithCommas(crypto.current_price)} USD</span>
             </h4>
             <h4>
               Volume 24h:<span className="currency">$</span>
-              <span>{crypto.market_cap_change_24h}</span>
+              <span>{numberWithCommas(crypto.market_cap_change_24h)}</span>
             </h4>
             <h4>
               Market Cap:<span className="currency">$</span>
-              <span>{crypto.market_cap}</span>
+              <span>{numberWithCommas(crypto.market_cap)}</span>
             </h4>
             <h4>
               24h %:{" "}
