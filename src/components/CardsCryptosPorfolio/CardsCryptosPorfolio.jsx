@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import React /* { useState } */ from "react";
+// import ReactDOM from "react-dom";
 
 import "./CardsCryptosPorfolio.scss";
 
-import { Modal } from "../../containers/Modal";
+// import { Modal } from "../../containers/Modal";
 
 export const CardsCryptosPorfolio = () => {
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
 
-  const openModal = () => {
-    setModal(true);
-  };
+  // const openModal = () => {
+  //   setModal(true);
+  // };
   return (
     <div className="porfolio__wrap-cards__card">
       <button
-        onClick={openModal}
+        // onClick={openModal}
         type="button"
         className="porfolio__wrap-cards__card--btn-edit"
         aria-label="Button edit"
@@ -85,10 +85,10 @@ export const CardsCryptosPorfolio = () => {
           </p>
         </div>
       </div>
-      {ReactDOM.createPortal(
+      {/* {ReactDOM.createPortal(
         modal && <Modal title={"Edit Cryptocurrencies"} setModal={setModal} />,
         document.getElementById("modal")
-      )}
+      )} */}
     </div>
   );
 };

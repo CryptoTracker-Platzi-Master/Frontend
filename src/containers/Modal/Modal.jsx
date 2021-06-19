@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "./Modal.scss";
 
-export const Modal = ({ setModal, title }) => {
+export const Modal = ({ setModal, title, currentCrypto }) => {
   const closeModal = () => {
     setModal(false);
   };
@@ -20,15 +20,12 @@ export const Modal = ({ setModal, title }) => {
           <h2 className="container-modal__modal--title">{title}</h2>
           <div className="container-modal__modal--head-crypto">
             <figure className="container-modal__modal--head-crypto--container-img">
-              <img
-                src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
-                alt=""
-              />
+              <img src={currentCrypto.image} alt={currentCrypto.name} />
             </figure>
             <h3>
-              Bitcoin{" "}
+              {currentCrypto.name}{" "}
               <span>
-                Price $: <span>2500</span>
+                Price $: <span>{currentCrypto.current_price}</span>
               </span>
             </h3>
           </div>

@@ -6,8 +6,10 @@ import { Modal } from "../../containers/Modal";
 
 export const CardCryptosDashboard = ({ cryptos }) => {
   const [modal, setModal] = useState(false);
+  const [currentCrypto, setCurrentCrypto] = useState(null);
 
-  const openModal = () => {
+  const openModal = (crypto) => () => {
+    setCurrentCrypto(crypto);
     setModal(true);
   };
 
@@ -16,7 +18,7 @@ export const CardCryptosDashboard = ({ cryptos }) => {
       {cryptos.map((crypto) => (
         <div key={crypto.id} className="dashboard__wrap-card--card">
           <button
-            onClick={openModal}
+            onClick={openModal(crypto)}
             className="dashboard__wrap-card--card--btn-plus"
             type="button"
             aria-label="Button addd crypto"
@@ -28,7 +30,7 @@ export const CardCryptosDashboard = ({ cryptos }) => {
               <img
                 className="dashboard__wrap-card--card__title--container-img--img"
                 src={crypto.image}
-                alt=""
+                alt={crypto.name}
               />
             </figure>
             <h3>
@@ -61,7 +63,13 @@ export const CardCryptosDashboard = ({ cryptos }) => {
         </div>
       ))}
       {ReactDOM.createPortal(
-        modal && <Modal title={"Add Cryptocurrencies"} setModal={setModal} />,
+        modal && (
+          <Modal
+            title={"Add Cryptocurrencies"}
+            setModal={setModal}
+            currentCrypto={currentCrypto}
+          />
+        ),
         document.getElementById("modal")
       )}
     </div>

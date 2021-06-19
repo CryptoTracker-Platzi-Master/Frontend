@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../../utils/variables";
+import { BASE_URL } from "./variables";
 
 export const getCryptos = async ({ setCryptos }) => {
   try {
