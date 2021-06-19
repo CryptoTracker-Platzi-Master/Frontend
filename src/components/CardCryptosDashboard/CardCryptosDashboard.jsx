@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./CardCryptosDashboard.scss";
 
-import { Modal } from "../Modal";
+import { Modal } from "../../containers/Modal";
 
 export const CardCryptosDashboard = ({ cryptos }) => {
   const [modal, setModal] = useState(false);

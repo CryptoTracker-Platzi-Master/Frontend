@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import "./CardsCryptosPorfolio.scss";
 
-import { Modal } from "../Modal";
+import { Modal } from "../../containers/Modal";
 
 export const CardsCryptosPorfolio = () => {
   const [modal, setModal] = useState(false);
