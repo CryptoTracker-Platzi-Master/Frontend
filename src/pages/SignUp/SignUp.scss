@@ -45,23 +45,36 @@
       & label {
         color: $color-text-dark;
         margin-bottom: 6px;
+        margin-top: 20px;
         @include subTitleMobile;
       }
 
       & input {
         width: 100%;
-        height: 28px;
+        height: 40px;
         margin-bottom: 6px;
         background-color: $color-dark-secondary;
         color: $color-text-dark;
         border: none;
         padding: 0 15px;
+        border-radius: 5px;
         @include paragraphsMobile;
         &::placeholder {
           color: $color-light-primary;
           opacity: 0.5;
         }
       }
+    }
+
+    .buttonSignUp {
+      padding: 1rem;
+      background-color: #FF5B5C;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
     }
   }
 }
