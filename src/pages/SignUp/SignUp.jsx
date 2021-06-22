@@ -21,11 +21,11 @@ export const SignUp = () => {
         <h2 className="sign-up--title">Sign Up</h2>
         <div className="sign-up__container-form">
           <form className="sign-up__container-form--form" action="form-sign-up">
-            <label htmlFor="first-name">First Name</label>
-            <input type="text" id="first-name" placeholder="Juanito" />
+            <label htmlFor="username">Username</label>
+            <input type="text" id="username" placeholder="JuanitoRT" />
 
-            <label htmlFor="last-name">Last Name</label>
-            <input type="text" id="last-name" placeholder="Smith" />
+            <label htmlFor="full-name">Full Name</label>
+            <input type="text" id="full-name" placeholder="Charly Smith" />
 
             <label htmlFor="email">Email</label>
             <input type="email" id="email" placeholder="example@example.com" />
