@@ -52,21 +52,9 @@ export const Login = () => {
         </figure>
         <h2 className="login--title">Login</h2>
         <div className="login__container-form">
-          <form
-           className="login__container-form--form"
-           action="form-login"
-           onSubmit={submitLogin}
-          >
-            <label htmlFor="email">Email</label>
-            <input 
-              type="email"
-              id="email" 
-              name="email"
-              placeholder="example@example.com"
-              onChange={actualizarLoginState}
-              value={email}
-             />
-
+          <form className="login__container-form--form" action="form-login">
+            <label htmlFor="username-login">Username</label>
+            <input type="email" id="username-login" placeholder="example@example.com" />
             <label htmlFor="password">Password</label>
             <input 
               type="password"

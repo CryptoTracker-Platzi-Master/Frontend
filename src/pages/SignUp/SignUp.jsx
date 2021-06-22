@@ -67,29 +67,12 @@ export const SignUp = () => {
         </figure>
         <h2 className="sign-up--title">Sign Up</h2>
         <div className="sign-up__container-form">
-          <form
-           className="sign-up__container-form--form"
-           onSubmit={submitRegistro}
-          >
-            <label htmlFor="first-name">First Name</label>
-            <input
-             type="text"
-             id="first-name" 
-             name="firstName"
-             placeholder="Juanito" 
-             value={firstName}
-             onChange={actualizarState}
-            />
+          <form className="sign-up__container-form--form" action="form-sign-up">
+            <label htmlFor="username">Username</label>
+            <input type="text" id="username" placeholder="JuanitoRT" />
 
-            <label htmlFor="last-name">Last Name</label>
-            <input
-             type="text"
-             id="last-name"
-             name="lastName"
-             placeholder="Smith"
-             onChange={actualizarState}
-             value={lastName}
-            />
+            <label htmlFor="full-name">Full Name</label>
+            <input type="text" id="full-name" placeholder="Charly Smith" />
 
             <label htmlFor="email">Email</label>
             <input
