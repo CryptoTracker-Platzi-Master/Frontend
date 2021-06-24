@@ -1,19 +1,26 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 import logoLogin from "../../assets/img/img-logo.png";
 import "./Login.scss";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
+import {LoginContext} from '../../Context/LoginContext';
+
 export const Login = () => {
+
 
   //Crear el state del login
   const[login, setLogin] = useState({
-    email:'',
+    username:'',
     password:''
   })
 
   const [error, setError] = useState(false)
+
+  const {setGuardarLogin} = useContext(LoginContext)
 
   //funcion que captura lo que el usuario escribe en los inputs
   const actualizarLoginState = (e) => {
@@ -24,18 +31,30 @@ export const Login = () => {
   }
 
   //Extraer los valores
-  const {email, password} = login;
+  const {username, password} = login;
 
   //cuando presiona login
   const submitLogin = (e) => {
     e.preventDefault()
 
-
     //Validar
-    if(email.trim() === '' || password.trim() === '') {
+    if(username.trim() === '' || password.trim() === '') {
       setError(true)
       return
     }
+    //enviar al context
+    console.log("login de login",login)
+   // setGuardarLogin(login)
+   axios.post('https://cryptotrackerapi.herokuapp.com/api/auth/login/', login)
+   .then(response => {
+     console.log("status", response.status);
+     if(response.data.status === 200){
+       <Link to="/dashboard"></Link>
+     }
+     console.log("data", response.data);
+   }).catch(error => {
+     console.log("algo salio mal", error)
+   })
 
   }
  
@@ -52,9 +71,21 @@ export const Login = () => {
         </figure>
         <h2 className="login--title">Login</h2>
         <div className="login__container-form">
-          <form className="login__container-form--form" action="form-login">
+          <form
+           className="login__container-form--form"
+           action="form-login"
+           onSubmit={submitLogin}
+          >
             <label htmlFor="username-login">Username</label>
-            <input type="email" id="username-login" placeholder="example@example.com" />
+            <input 
+              type="text" 
+              id="username-login" 
+              placeholder="example@example.com"
+              name="username"
+              value={username}
+              onChange={actualizarLoginState}
+            />
+
             <label htmlFor="password">Password</label>
             <input 
               type="password"
