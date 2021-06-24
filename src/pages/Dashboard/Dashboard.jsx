@@ -12,7 +12,13 @@ export const Dashboard = () => {
   const [cryptos, setCryptos] = useState([]);
 
   useEffect(() => {
-    document.addEventListener("DOMContentLoaded", getCryptos({ setCryptos }));
+    getCryptos({ setCryptos });
+    const interval = setInterval(() => {
+      getCryptos({ setCryptos });
+    }, 15000);
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
 
   return (
