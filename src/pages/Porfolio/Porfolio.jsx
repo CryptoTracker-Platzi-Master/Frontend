@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Porfolio.scss";
@@ -7,7 +7,10 @@ import { HeaderDashboard } from "../../components/HeaderDashboard";
 import { FooterDashboard } from "../../components/FooterDashboard";
 import { CardsCryptosPorfolio } from "../../components/CardsCryptosPorfolio";
 
-export const Porfolio = () => {
+export const Porfolio = ({crearCrypto}) => {
+
+  console.log("info desde porfolio", crearCrypto)
+
   return (
     <>
       <HeaderDashboard />
@@ -31,7 +34,9 @@ export const Porfolio = () => {
           </h4>
         </div>
         <div className="porfolio__wrap-cards">
-          <CardsCryptosPorfolio />
+          <CardsCryptosPorfolio
+            
+          />
         </div>
       </main>
       <FooterDashboard />
