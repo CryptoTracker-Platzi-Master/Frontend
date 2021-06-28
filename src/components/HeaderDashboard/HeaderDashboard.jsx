@@ -6,7 +6,9 @@ import { LoginContext } from "../../Context/LoginContext";
 
 export const HeaderDashboard = () => {
 
-  const {setGuardarLogin} = useContext(LoginContext)
+  const {login} = useContext(LoginContext)
+
+  console.log("lo que deberia traer", login)
 
   return (
     <header className="header-dashboard">
@@ -18,7 +20,7 @@ export const HeaderDashboard = () => {
         />
       </figure>
       <p className="header-dashboard--name-user">
-        Hi, <span>Leonardo</span>
+        Hi, <span>{login.email}</span>
       </p>
       <nav className="header-dashboard__nav">
         <Link to="/">
