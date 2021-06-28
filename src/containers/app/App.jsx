@@ -1,7 +1,8 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, {useState} from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import  LoginProvider  from "../../Context/LoginContext";
-import SignUpContext from "../../Context/SignUpContext";
+import  SignUpProvider from "../../Context/SignUpContext";
+import  ModalProvider  from "../../Context/ModalContext";
 
 import { Home } from "../../pages/Home";
 import { Login } from "../../pages/Login";
@@ -16,21 +17,45 @@ import "../../assets/css/App.css";
 
 
 export const App = () => {
+  const[isLogin, setIsLogin] = useState(false)
+  const[isauthenticated, setIsauthenticated] = useState(false)
+
   return (
     <LoginProvider>
-      <SignUpContext>
+      <SignUpProvider>
+        <ModalProvider>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/sign-up" component={SignUp} />
-            <Route exact path="/2fa" component={Authentication} />
+            <Route
+              exact path="/login"
+              render={(props) => <Login {...props} setIsLogin={setIsLogin} setIsauthenticated={setIsauthenticated}/>}
+            >
+              
+              {isLogin && <Redirect to="/2fa" />}
+            </Route>
+
+            <Route
+              exact path="/sign-up"
+              render={(props) => <SignUp {...props} setIsLogin={setIsLogin}/>}
+            >
+              {isLogin && <Redirect to="/login" />}
+            </Route>
+
+            <Route
+              exact path="/2fa" 
+              render={(props) => <Authentication {...props} setIsauthenticated={setIsauthenticated}/>}
+            >
+              {isauthenticated && <Redirect to="/dashboard" />}
+            </Route>
+
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/porfolio" component={Porfolio} />
             {/* <Route exact path="/modal" component={Modal} /> */}
           </Switch>
         </BrowserRouter>
-      </SignUpContext>
+        </ModalProvider>
+      </SignUpProvider>
     </LoginProvider>
   );
 };

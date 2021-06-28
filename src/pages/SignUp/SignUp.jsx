@@ -7,11 +7,12 @@ import "./SignUp.scss";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-export const SignUp = () => {
+export const SignUp = ({setIsLogin}) => {
 
   //Creando el state del formulario
   const [registro, setRegistro] = useState({
     username: '',
+    first_name:'',
     email: '',
     password: '',
     confirm:''
@@ -29,7 +30,7 @@ export const SignUp = () => {
   }
 
   //Extraer los valores
-  const{username, email, password, confirm} = registro;
+  const{username,first_name, email, password, confirm} = registro;
 
   //Capturando datos del formulario
   const submitRegistro = (e) => {
@@ -47,6 +48,7 @@ export const SignUp = () => {
     //Reiniciar el form
     setRegistro({
       username: '',
+      first_name:'',
       email: '',
       password: '',
       confirm:''
@@ -57,8 +59,11 @@ export const SignUp = () => {
     // setGuardarLogin(login)
     axios.post('https://cryptotrackerapi.herokuapp.com/api/auth/signup/', registro)
     .then(response => {
-      console.log("status", response.status);
-      console.log("data", response.data);
+      //console.log("status", response.status);
+      //console.log("data", response.data);
+      localStorage.setItem("ID_usuario", response.data.user_id);
+      localStorage.setItem("Token_usuario", response.data.token);
+      setIsLogin(true)
     }).catch(error => {
       console.log("algo salio mal", error)
     })
@@ -98,7 +103,10 @@ export const SignUp = () => {
             <input 
               type="text"
               id="full-name" 
+              name="first_name"
+              value={first_name}
               placeholder="Charly Smith"
+              onChange={actualizarState}
             />
 
             <label htmlFor="email">Email</label>
@@ -136,7 +144,7 @@ export const SignUp = () => {
               className="buttonSignUp"
             >Sign Up</button>
           </form>
-          {error ?<p>Todos los campos son obligatorios</p>: null}
+          {error ? <p className="error">Todos los campos son obligatorios</p> : null}
         </div>
       </main>
       <Footer />

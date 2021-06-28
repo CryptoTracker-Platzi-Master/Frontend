@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useContext } from "react";
-import {Link} from 'react-router-dom';
 import axios from 'axios';
 import logoLogin from "../../assets/img/img-logo.png";
 import "./Login.scss";
@@ -9,7 +8,7 @@ import { Footer } from "../../components/Footer";
 
 import {LoginContext} from '../../Context/LoginContext';
 
-export const Login = () => {
+export const Login = ({setIsLogin, setIsauthenticated}) => {
 
 
   //Crear el state del login
@@ -47,14 +46,23 @@ export const Login = () => {
    // setGuardarLogin(login)
    axios.post('https://cryptotrackerapi.herokuapp.com/api/auth/login/', login)
    .then(response => {
-     console.log("status", response.status);
-     if(response.data.status === 200){
-       <Link to="/dashboard"></Link>
+     //console.log("status", response.status);
+     if(response.status === 200){
+      setIsLogin(true)
+      localStorage.setItem("ID_usuario", response.data.user_id);
+      localStorage.setItem("Token_usuario", response.data.token);
+      console.log("objeto usuario", response.data)
+
+      if(response.data.validated){
+        setIsauthenticated(true)
+      }
      }
-     console.log("data", response.data);
+     
    }).catch(error => {
      console.log("algo salio mal", error)
    })
+
+   setGuardarLogin(login)
 
   }
  
@@ -101,7 +109,7 @@ export const Login = () => {
               className="buttonLogin"
             >Login</button>
           </form>
-          {error ?<p>El correo o la contraseña estan errados</p>: null}
+          {error ?<p className="error">El correo o la contraseña estan errados</p>: null}
         </div>
       </main>
       <Footer />

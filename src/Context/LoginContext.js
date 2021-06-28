@@ -13,26 +13,7 @@ const LoginProvider = (props) => {
     })
 
     const {email, password} = login;
-    console.log(login)
-
-    useEffect(() => {
-            const loginUsuario = async () => {
-                const url = `https://cryptotrackerapi.herokuapp.com/api/auth/login/`;
-
-                const resultado = await axios({
-                    method: 'POST',
-                    url: url,
-                    data: {
-                        username: email,
-                        password:password
-                    }
-                }).then(res => {
-                    console.log(res);
-                    resultado(res.data)
-                })
-                loginUsuario();
-            }
-    }, [login])
+    console.log("desde el context", login)
 
     return (
         <LoginContext.Provider
