@@ -1,12 +1,11 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import imgPerfile from "../../assets/img/img-perfile.png";
 import "./HeaderDashboard.scss";
-import { LoginContext } from "../../Context/LoginContext";
+// import { LoginContext } from "../../Context/LoginContext";
 
 export const HeaderDashboard = () => {
-
-  const {setGuardarLogin} = useContext(LoginContext)
+  // const {setGuardarLogin} = useContext(LoginContext)
 
   return (
     <header className="header-dashboard">

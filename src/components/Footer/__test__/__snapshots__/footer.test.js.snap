@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[ component / Footer ] when  \`Footer\` is mounted [\`Footer\`] 1`] = `
+<DocumentFragment>
+  <footer
+    class="footer"
+  >
+    <p
+      class="footer--Copyright"
+    >
+      Copyright
+    </p>
+  </footer>
+</DocumentFragment>
+`;
