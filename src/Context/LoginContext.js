@@ -1,5 +1,4 @@
 import React, {createContext, useState, useEffect} from 'react';
-import axios from 'axios';
 
 //Crear el Context
 export const LoginContext = createContext();
@@ -12,12 +11,13 @@ const LoginProvider = (props) => {
         password: ''
     })
 
-    const {email, password} = login;
-    console.log("desde el context", login)
+    //const {email, password} = login;
+    console.log("desde el context Login", login)
 
     return (
         <LoginContext.Provider
             value={{
+                login,
                 setGuardarLogin
             }}
         >

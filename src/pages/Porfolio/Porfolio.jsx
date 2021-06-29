@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./Porfolio.scss";
@@ -7,9 +7,30 @@ import { HeaderDashboard } from "../../components/HeaderDashboard";
 import { FooterDashboard } from "../../components/FooterDashboard";
 import { CardsCryptosPorfolio } from "../../components/CardsCryptosPorfolio";
 
-export const Porfolio = ({crearCrypto}) => {
+import axios from "axios";
 
-  console.log("info desde porfolio", crearCrypto)
+export const Porfolio = () => {
+
+  const [datacryptos, setdataCrypto] = useState([])
+
+  let tokenUsuario = localStorage.getItem("Token_usuario")
+
+  let options = {
+    headers: {
+      'Authorization' : "Token " + tokenUsuario
+    }
+  }
+  
+useEffect (() => {
+  const obtenercryptos = async () => {
+    const url = 'https://cryptotrackerapi.herokuapp.com/portfolio/';
+
+    const datacryptos = await axios.get(url, options)
+    setdataCrypto(datacryptos.data)
+    console.log("respuesta del await", datacryptos)
+  }
+  obtenercryptos()
+}, [])
 
   return (
     <>
@@ -34,9 +55,12 @@ export const Porfolio = ({crearCrypto}) => {
           </h4>
         </div>
         <div className="porfolio__wrap-cards">
+        {datacryptos.map((datacrypto, index) =>(
           <CardsCryptosPorfolio
-            
+            key={index}
+            datacrypto={datacrypto}
           />
+         ))}
         </div>
       </main>
       <FooterDashboard />

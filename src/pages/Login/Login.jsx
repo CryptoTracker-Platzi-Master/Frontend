@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import axios from 'axios';
 import logoLogin from "../../assets/img/img-logo.png";
 import "./Login.scss";
@@ -62,10 +62,14 @@ export const Login = ({setIsLogin, setIsauthenticated}) => {
      console.log("algo salio mal", error)
    })
 
+   //envia al context
    setGuardarLogin(login)
 
   }
- 
+ /* useEffect(()=>{ */
+ /*  submitLogin() */
+ /* },[login]) */
+
   return (
     <>
       <Header />
