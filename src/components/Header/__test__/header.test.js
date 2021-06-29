@@ -17,3 +17,18 @@ describe("[ component / Header ]", () => {
     });
   });
 });
+
+// unit testing
+// entradas y salidas
+// es una fn, valido lo que entra y que slaga lo esperado
+
+//estructura a component que UI
+// que se mantenga la structura, si falla es por que hay un bug, o se actualizo la estructura.
+
+//interaction
+// si la interacion del component reaciona bien
+
+//integracion -- visual testing
+// como trabajan los component entre si o pages, front and back
+
+//end to end --- se prueba flujos
