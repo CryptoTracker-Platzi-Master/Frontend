@@ -76,5 +76,16 @@
       border-radius: 5px;
       margin-top: 20px;
     }
+
+    .error{
+      color: white;
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      background: red;
+      padding: 1rem;
+      border-radius: 5px;
+    }
   }
 }

@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import axios from 'axios';
 import logoSignUp from "../../assets/img/img-logo.png";
 
 import "./SignUp.scss";
@@ -6,15 +7,15 @@ import "./SignUp.scss";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-export const SignUp = () => {
+export const SignUp = ({setIsLogin}) => {
 
   //Creando el state del formulario
   const [registro, setRegistro] = useState({
-    firstName: '',
-    lastName: '',
+    username: '',
+    first_name:'',
     email: '',
     password: '',
-    confirmPassword:''
+    confirm:''
   });
 
   //State del error
@@ -29,14 +30,14 @@ export const SignUp = () => {
   }
 
   //Extraer los valores
-  const{firstName, lastName, email, password, confirmPassword} = registro;
+  const{username,first_name, email, password, confirm} = registro;
 
   //Capturando datos del formulario
   const submitRegistro = (e) => {
     e.preventDefault();
 
     //Validar campos completos
-    if(firstName.trim() === '' || lastName.trim() === '' ||  email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '' ) {
+    if(username.trim() === '' ||  email.trim() === '' || password.trim() === '' || confirm.trim() === '' ) {
       setError(true)
       return;
     }
@@ -46,12 +47,27 @@ export const SignUp = () => {
 
     //Reiniciar el form
     setRegistro({
-      firstName: '',
-      lastName: '',
+      username: '',
+      first_name:'',
       email: '',
       password: '',
-      confirmPassword:''
+      confirm:''
     })
+
+    //Enviar al API
+    console.log("login de login",registro)
+    // setGuardarLogin(login)
+    axios.post('https://cryptotrackerapi.herokuapp.com/api/auth/signup/', registro)
+    .then(response => {
+      //console.log("status", response.status);
+      //console.log("data", response.data);
+      localStorage.setItem("ID_usuario", response.data.user_id);
+      localStorage.setItem("Token_usuario", response.data.token);
+      setIsLogin(true)
+    }).catch(error => {
+      console.log("algo salio mal", error)
+    })
+
   }
 
   return (
@@ -67,12 +83,31 @@ export const SignUp = () => {
         </figure>
         <h2 className="sign-up--title">Sign Up</h2>
         <div className="sign-up__container-form">
-          <form className="sign-up__container-form--form" action="form-sign-up">
+          <form 
+            className="sign-up__container-form--form"
+            action="form-sign-up"
+            onSubmit={submitRegistro}
+          >
+
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" placeholder="JuanitoRT" />
+            <input
+             type="text"
+             id="username"
+             placeholder="JuanitoRT"
+             name="username"
+             value={username}
+             onChange={actualizarState}
+            />
 
             <label htmlFor="full-name">Full Name</label>
-            <input type="text" id="full-name" placeholder="Charly Smith" />
+            <input 
+              type="text"
+              id="full-name" 
+              name="first_name"
+              value={first_name}
+              placeholder="Charly Smith"
+              onChange={actualizarState}
+            />
 
             <label htmlFor="email">Email</label>
             <input
@@ -97,11 +132,11 @@ export const SignUp = () => {
             <label htmlFor="confirm-password">Confirm Password</label>
             <input
               type="password"
-              id="confirm-password"
+              id="confirm"
               placeholder="Confirm Password"
-              name="confirmPassword"
+              name="confirm"
               onChange={actualizarState}
-              value={confirmPassword}
+              value={confirm}
             />
 
             <button
@@ -109,7 +144,7 @@ export const SignUp = () => {
               className="buttonSignUp"
             >Sign Up</button>
           </form>
-          {error ?<p>Todos los campos son obligatorios</p>: null}
+          {error ? <p className="error">Todos los campos son obligatorios</p> : null}
         </div>
       </main>
       <Footer />
