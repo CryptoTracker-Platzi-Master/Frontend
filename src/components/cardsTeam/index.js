@@ -1,0 +1,1 @@
+export { CardsTeam } from './CardsTeam';
