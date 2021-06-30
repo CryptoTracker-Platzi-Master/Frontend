@@ -85,7 +85,7 @@ export const Authentication = ({ setIsauthenticated }) => {
             onSubmit={twoFactorSubmit}
           >
             <input
-              type='password'
+              type='text'
               id='code_2fa'
               name='code'
               value={code}
