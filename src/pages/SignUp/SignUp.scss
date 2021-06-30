@@ -1,6 +1,6 @@
-@import "../../assets/scss/reset";
-@import "../../assets/scss/variables";
-@import "../../assets/scss/mixins";
+@import '../../assets/scss/reset';
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
 
 .sign-up {
   width: 90%;
@@ -64,20 +64,25 @@
           opacity: 0.5;
         }
       }
+
+      .button-signup {
+        padding: 1rem;
+        background-color: transparent;
+        color: $color-text-dark;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid $color-secondary;
+        border-radius: 12px;
+        margin-top: 20px;
+        letter-spacing: 1px;
+        &:hover {
+          background-color: $color-secondary;
+          color: $color-dark-primary;
+        }
+      }
     }
 
-    .buttonSignUp {
-      padding: 1rem;
-      background-color: #FF5B5C;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      margin-top: 20px;
-    }
-
-    .error{
+    .error {
       color: white;
       text-align: center;
       margin-top: 20px;
