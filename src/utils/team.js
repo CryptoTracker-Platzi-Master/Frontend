@@ -15,7 +15,7 @@ export const team = [
     id: 2,
     name: 'Tomás Vergara ',
     rol: 'Front-End Developer',
-    twitter: '',
+    twitter: 'https://twitter.com/juliantomasver1',
     linkedin: 'https://www.linkedin.com/in/jtomasvc/',
     img: imgTomas,
   },
