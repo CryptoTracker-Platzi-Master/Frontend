@@ -9,7 +9,7 @@ const SignUpProvider = (props) => {
 
 
     return (
-        <SignUpContext.Provider>
+        <SignUpContext.Provider value="">
             {props.children}
         </SignUpContext.Provider>
     )
