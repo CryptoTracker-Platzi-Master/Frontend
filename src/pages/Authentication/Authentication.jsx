@@ -55,9 +55,10 @@ export const Authentication = ({setIsauthenticated}) => {
 
     axios.post('https://cryptotrackerapi.herokuapp.com/api/auth/validate/', Data, options)
     .then(response => {
-      console.log("respuesta del response", response)
+      
         if(response.status === 200 && response.data.verified){
           setIsauthenticated(true)
+          console.log("respuesta del response", response.data.verified)
         }else {
           
         }

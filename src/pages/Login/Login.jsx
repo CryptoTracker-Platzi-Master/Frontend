@@ -56,9 +56,8 @@ export const Login = ({setIsLogin, setIsauthenticated}) => {
       if(response.data.validated){
         setIsauthenticated(true)
       }
-     }
-     
-   }).catch(error => {
+    }
+  }).catch(error => {
      console.log("algo salio mal", error)
    })
 

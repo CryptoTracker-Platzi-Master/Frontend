@@ -31,7 +31,6 @@ export const App = () => {
               exact path="/login"
               render={(props) => <Login {...props} setIsLogin={setIsLogin} setIsauthenticated={setIsauthenticated}/>}
             >
-              
               {isLogin && <Redirect to="/2fa" />}
             </Route>
 

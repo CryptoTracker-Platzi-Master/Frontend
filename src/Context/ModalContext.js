@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext} from 'react';
 
 //Crear el context
 export const ModalContext = createContext();
@@ -7,23 +7,19 @@ export const ModalContext = createContext();
 
 const ModalProvider = (props) => {
 
-    const [moneda, setGuardarMoneda] = useState({
-        price: '',
-        quantity:'',
-        amount:'',
-        expected:'',
-        lost:''
-    })
+    /* const [moneda, setGuardarMoneda] = useState({ */
+    /*     price: '', */
+    /*     quantity:'', */
+    /*     amount:'', */
+    /*     expected:'', */
+    /*     lost:'' */
+    /* }) */
 
-    const {price, quantity, amount, expected, lost} = moneda;
-    console.log("desde el context Modal", moneda)
+  /*   const {price, quantity, amount, expected, lost} = moneda; */
+  /*   console.log("desde el context Modal", moneda) */
 
     return (
-        <ModalContext.Provider
-            value={{
-                setGuardarMoneda
-            }}
-        >
+        <ModalContext.Provider value="">
             {props.children}
         </ModalContext.Provider>
     )
