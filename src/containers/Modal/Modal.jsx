@@ -79,7 +79,8 @@ export const Modal = ({ setModal, title, currentCrypto}) => {
       take_profit: crypto.expected,
       stop_loss: crypto.lost,
       cantity: crypto.quantity,
-      user_fk: usuario
+      user_fk: usuario,
+      amount_invested:crypto.amount
     }
 
     console.log("token usuario", options)
