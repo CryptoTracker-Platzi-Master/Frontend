@@ -86,7 +86,7 @@ export const Modal = ({ setModal, title, currentCrypto}) => {
 
     axios.post('https://cryptotrackerapi.herokuapp.com/criptos/', Data, options)
     .then(response => {
-      console.log("respuesta", response.status)
+      console.log("respuesta", response)
     }).catch(error=> {
       console.log("error del post", error)
     })
