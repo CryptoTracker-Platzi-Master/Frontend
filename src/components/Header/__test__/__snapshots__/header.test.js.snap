@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[ component / Header ] when  \`Header\` is mounted [\`Header\`] 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+  >
+    <figure
+      class="header__container-img"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="logo"
+          class="header__container-img--img"
+          src="logoTipo.png"
+        />
+      </a>
+    </figure>
+    <nav
+      class="header__nav"
+    >
+      <a
+        href="/login"
+      >
+        <button
+          class="header__nav--login"
+          type="button"
+        >
+          Login
+        </button>
+      </a>
+      <a
+        href="/sign-up"
+      >
+        <button
+          class="header__nav--sign-up"
+          type="button"
+        >
+          Sign Up
+        </button>
+      </a>
+    </nav>
+  </header>
+</DocumentFragment>
+`;

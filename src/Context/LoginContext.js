@@ -1,4 +1,5 @@
-import React, {createContext, useState} from 'react';
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 //Crear el Context
 export const LoginContext = createContext();
@@ -27,8 +28,3 @@ const LoginProvider = (props) => {
 }
 
 export default LoginProvider;
-
-
-
-
-
