@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useContext } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 import logoLogin from '../../assets/img/img-logo.png';
 import './Login.scss';
 
@@ -8,7 +9,8 @@ import { Footer } from '../../components/Footer';
 
 import { LoginContext } from '../../Context/LoginContext';
 
-export const Login = ({ setIsLogin, setIsauthenticated }) => {
+export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
+  let history = useHistory();
   //Crear el state del login
   const [login, setLogin] = useState({
     username: '',
@@ -45,23 +47,29 @@ export const Login = ({ setIsLogin, setIsauthenticated }) => {
     axios
       .post('https://cryptotrackerapi.herokuapp.com/api/auth/login/', login)
       .then((response) => {
-        //console.log("status", response.status);
+        // console.log("status", response.status);
         if (response.status === 200) {
           setIsLogin(true);
           localStorage.setItem('ID_usuario', response.data.user_id);
           localStorage.setItem('Token_usuario', response.data.token);
           console.log('objeto usuario', response.data);
 
-          if (response.data.validated) {
-            setIsauthenticated(true);
-          }
+          response.data.verified
+            ? history.push('/dashboard')
+            : history.push('/2fa');
+          // if (response.data.validated) {
+          //   setIsauthenticated(true);
+          // }
         }
       })
       .catch((error) => {
         console.log('algo salio mal', error);
       });
 
-    setGuardarLogin(login);
+    // setGuardarLogin(login);
+    // if (isauthenticated) {
+    //   history.push('/dashboard');
+    // }
   };
 
   return (
