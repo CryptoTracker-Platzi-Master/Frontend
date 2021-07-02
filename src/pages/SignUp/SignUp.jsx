@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 import logoSignUp from '../../assets/img/img-logo.png';
 
 import './SignUp.scss';
@@ -8,6 +9,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 
 export const SignUp = ({ setIsLogin }) => {
+  let history = useHistory();
   //Creando el state del formulario
   const [registro, setRegistro] = useState({
     username: '',
@@ -68,7 +70,10 @@ export const SignUp = ({ setIsLogin }) => {
         //console.log("data", response.data);
         localStorage.setItem('ID_usuario', response.data.user_id);
         localStorage.setItem('Token_usuario', response.data.token);
-        setIsLogin(true);
+        // setIsLogin(true);
+        if (response.status === 200) {
+          history.push('login');
+        }
       })
       .catch((error) => {
         console.log('algo salio mal', error);
