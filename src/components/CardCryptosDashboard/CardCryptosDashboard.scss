@@ -1,6 +1,6 @@
-@import "../../assets/scss/reset";
-@import "../../assets/scss/variables";
-@import "../../assets/scss/mixins";
+@import '../../assets/scss/reset';
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
 
 .dashboard__wrap-card {
   width: 100%;
@@ -35,7 +35,6 @@
     &__title {
       width: 100%;
       display: flex;
-      // justify-content: center;
       align-items: center;
 
       &--container-img {

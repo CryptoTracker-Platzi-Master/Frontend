@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import "./CardCryptosDashboard.scss";
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import './CardCryptosDashboard.scss';
 
-import { Modal } from "../../containers/Modal";
-import { numberWithCommas } from "../../utils/numberWithCommas";
+import { Modal } from '../../containers/Modal';
+import { numberWithCommas } from '../../utils/numberWithCommas';
 
 export const CardCryptosDashboard = ({ cryptos }) => {
   const [modal, setModal] = useState(false);
@@ -11,25 +11,26 @@ export const CardCryptosDashboard = ({ cryptos }) => {
 
   const openModal = (crypto) => () => {
     setCurrentCrypto(crypto);
+
     setModal(true);
   };
 
   return (
-    <div className="dashboard__wrap-card">
+    <div className='dashboard__wrap-card'>
       {cryptos.map((crypto) => (
-        <div key={crypto.id} className="dashboard__wrap-card--card">
+        <div key={crypto.id} className='dashboard__wrap-card--card'>
           <button
             onClick={openModal(crypto)}
-            className="dashboard__wrap-card--card--btn-plus"
-            type="button"
-            aria-label="Button addd crypto"
+            className='dashboard__wrap-card--card--btn-plus'
+            type='button'
+            aria-label='Button addd crypto'
           >
-            <i className="fas fa-plus-circle"></i>
+            <i className='fas fa-plus-circle'></i>
           </button>
-          <div className="dashboard__wrap-card--card__title">
-            <figure className="dashboard__wrap-card--card__title--container-img">
+          <div className='dashboard__wrap-card--card__title'>
+            <figure className='dashboard__wrap-card--card__title--container-img'>
               <img
-                className="dashboard__wrap-card--card__title--container-img--img"
+                className='dashboard__wrap-card--card__title--container-img--img'
                 src={crypto.image}
                 alt={crypto.name}
               />
@@ -38,7 +39,7 @@ export const CardCryptosDashboard = ({ cryptos }) => {
               {crypto.name} - <span>{crypto.symbol}</span>
             </h3>
           </div>
-          <div className="dashboard__wrap-card--card__description">
+          <div className='dashboard__wrap-card--card__description'>
             <h4>
               Market Cap Rank: <span>{crypto.market_cap_rank}</span>
             </h4>
@@ -46,16 +47,16 @@ export const CardCryptosDashboard = ({ cryptos }) => {
               Price: <span>{numberWithCommas(crypto.current_price)} USD</span>
             </h4>
             <h4>
-              Volume 24h:<span className="currency">$</span>
+              Volume 24h:<span className='currency'>$</span>
               <span>{numberWithCommas(crypto.market_cap_change_24h)}</span>
             </h4>
             <h4>
-              Market Cap:<span className="currency">$</span>
+              Market Cap:<span className='currency'>$</span>
               <span>{numberWithCommas(crypto.market_cap)}</span>
             </h4>
             <h4>
-              24h %:{" "}
-              <span className="percentage-24h">
+              24h %:{' '}
+              <span className='percentage-24h'>
                 {crypto.price_change_percentage_24h}
               </span>
             </h4>
@@ -65,12 +66,12 @@ export const CardCryptosDashboard = ({ cryptos }) => {
       {ReactDOM.createPortal(
         modal && (
           <Modal
-            title={"Add Cryptocurrencies"}
+            title={'Add Cryptocurrencies'}
             setModal={setModal}
             currentCrypto={currentCrypto}
           />
         ),
-        document.getElementById("modal")
+        document.getElementById('modal')
       )}
     </div>
   );

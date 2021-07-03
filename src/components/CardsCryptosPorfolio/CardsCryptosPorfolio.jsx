@@ -1,21 +1,41 @@
-import React, { Fragment } from 'react';
-// import ReactDOM from "react-dom";
+import React, { Fragment, useState } from 'react';
+import ReactDOM from 'react-dom';
 
 import './CardsCryptosPorfolio.scss';
 
-// import { Modal } from "../../containers/Modal";
+import { Modal } from '../../containers/Modal';
 
-export const CardsCryptosPorfolio = ({ datacrypto }) => {
-  // const [modal, setModal] = useState(false);
+export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
+  const [modal, setModal] = useState(false);
+  const [currentCrypto, setCurrentCrypto] = useState(null);
+  let coins = cryptos;
 
-  // const openModal = () => {
-  //   setModal(true);
-  // };
+  const filterCrypotoPerName = (cryptoCurrency) => {
+    return coins.filter((coin) => coin.symbol === cryptoCurrency && coin);
+  };
+
+  const getImgCoin = () => {
+    const coinData = filterCrypotoPerName(datacrypto.symbol);
+    return coinData[0].image;
+  };
+
+  const getPriceCoin = () => {
+    const coinData = filterCrypotoPerName(datacrypto.symbol);
+    return coinData[0].current_price;
+  };
+
+  const openModal = (crypto) => () => {
+    crypto.current_price = getPriceCoin();
+    crypto.image = getImgCoin();
+    setCurrentCrypto(crypto);
+
+    setModal(true);
+  };
   return (
     <Fragment>
       <div className='porfolio__wrap-cards__card'>
         <button
-          // onClick={openModal}
+          onClick={openModal(datacrypto)}
           type='button'
           className='porfolio__wrap-cards__card--btn-edit'
           aria-label='Button edit'
@@ -33,7 +53,7 @@ export const CardsCryptosPorfolio = ({ datacrypto }) => {
           <figure className='porfolio__wrap-cards__card__head--contariner-img'>
             <img
               className='porfolio__wrap-cards__card__head--contariner-img--img'
-              src='https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579'
+              src={getImgCoin()}
               alt=''
             />
           </figure>
@@ -41,7 +61,7 @@ export const CardsCryptosPorfolio = ({ datacrypto }) => {
             {datacrypto.name} - <span>{datacrypto.symbol}</span>
           </h3>
           <p>
-            $ <span>36000</span>
+            $ <span>{getPriceCoin()}</span>
           </p>
         </div>
         <div className='porfolio__wrap-cards__card__description'>
@@ -55,7 +75,7 @@ export const CardsCryptosPorfolio = ({ datacrypto }) => {
           </h4>
           <h4>
             Amount invested: <span>$</span>
-            <span>0</span>
+            <span>{datacrypto.amount_invested}</span>
           </h4>
           <h4>
             Expected gain: <span>$</span>
@@ -70,26 +90,35 @@ export const CardsCryptosPorfolio = ({ datacrypto }) => {
           <div className='porfolio__wrap-cards__card__revenues--buy'>
             <h4>
               <i className='fas fa-long-arrow-alt-up icon-buy'></i>
-              Sell at a profit
+              Sell price to profit
             </h4>
             <p>
-              <span>$</span> 200
+              <span>$</span>{' '}
+              {(getPriceCoin() + datacrypto.take_profit).toFixed(3)}
             </p>
           </div>
           <div className='porfolio__wrap-cards__card__revenues--sell'>
             <h4>
               <i className='fas fa-long-arrow-alt-down icon-sell'></i>
-              sell at a loss
+              sell price to loss
             </h4>
             <p>
-              <span>$</span> 200
+              <span>$</span>{' '}
+              {(getPriceCoin() - datacrypto.stop_loss).toFixed(3)}
             </p>
           </div>
         </div>
-        {/* {ReactDOM.createPortal(
-        modal && <Modal title={"Edit Cryptocurrencies"} setModal={setModal} />,
-        document.getElementById("modal")
-      )} */}
+        {ReactDOM.createPortal(
+          modal && (
+            <Modal
+              title={'Edit Cryptocurrencies'}
+              setModal={setModal}
+              currentCrypto={currentCrypto}
+              isEdit={true}
+            />
+          ),
+          document.getElementById('modal')
+        )}
       </div>
     </Fragment>
   );

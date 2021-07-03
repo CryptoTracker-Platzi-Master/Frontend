@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import './Modal.scss';
 
 import { numberWithCommas } from '../../utils/numberWithCommas';
 import axios from 'axios';
-import {Error} from '../../components/Error';
+import { Error } from '../../components/Error';
 
-export const Modal = ({ setModal, title, currentCrypto }) => {
+export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
   const closeModal = () => {
     setModal(false);
   };
@@ -25,7 +25,6 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
   //Mensaje moneda creada
 
   const [Money, setMoneyCreated] = useState(false);
-
 
   //cuando el usuario escribe en el input
   const actualizarState = (e) => {
@@ -66,7 +65,6 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
     });
 
     //Pasar datos al context
-    //setGuardarMoneda(crypto)
 
     let tokenUsuario = localStorage.getItem('Token_usuario');
 
@@ -90,21 +88,25 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
       user_fk: usuario,
     };
 
-    //console.log('token usuario', options);
-
     axios
       .post('https://cryptotrackerapi.herokuapp.com/criptos/', Data, options)
       .then((response) => {
-          //console.log('respuesta', response.status);
-          setMoneyCreated(true)
-        
+        setMoneyCreated(true);
       })
-      .catch((error) => {
-        //console.log('error del post', error);
-      });
-
-    //console.log('Agregando crypto', Data);
+      .catch((error) => {});
   };
+
+  useEffect(() => {
+    if (isEdit) {
+      guardarCrypto({
+        price: currentCrypto.purchase_price,
+        quantity: currentCrypto.cantity,
+        amount: currentCrypto.amount_invested,
+        expected: currentCrypto.take_profit,
+        lost: currentCrypto.stop_loss,
+      });
+    }
+  }, []);
 
   return (
     <>
@@ -199,9 +201,13 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
                 </button>
               </div>
 
-              {error ? <Error mensaje="Todos los campos son obligatorios" /> : null}
+              {error ? (
+                <Error mensaje='Todos los campos son obligatorios' />
+              ) : null}
 
-              {Money ? <p className="addCoin">Moneda Agregada correctamente</p> : null}
+              {Money ? (
+                <p className='addCoin'>Moneda Agregada correctamente</p>
+              ) : null}
             </form>
           </div>
         </div>

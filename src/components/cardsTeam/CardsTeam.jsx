@@ -20,10 +20,10 @@ export const CardsTeam = () => {
               </figure>
             </div>
             <div className='about__team__card--description'>
-              <a href={item.twitter} target='_blank'>
+              <a href={item.twitter} target='_blank' rel='noreferrer'>
                 <i className='fab fa-twitter'></i>
               </a>
-              <a href={item.linkedin} target='_blank'>
+              <a href={item.linkedin} target='_blank' rel='noreferrer'>
                 <i className='fab fa-linkedin'></i>
               </a>
 
