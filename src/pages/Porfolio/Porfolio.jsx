@@ -27,7 +27,7 @@ useEffect (() => {
 
     const datacryptos = await axios.get(url, options)
     setdataCrypto(datacryptos.data)
-    console.log("respuesta del await", datacryptos)
+    //console.log("respuesta del await", datacryptos)
   }
   obtenercryptos()
 }, [])

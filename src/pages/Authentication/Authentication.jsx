@@ -3,6 +3,7 @@ import './Authentication.scss';
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import {Error} from  '../../components/Error';
 
 import icon2fa from '../../assets/img/icon-2fa.png';
 import axios from 'axios';
@@ -13,6 +14,7 @@ export const Authentication = ({ setIsauthenticated }) => {
   });
 
   const [error, setError] = useState(false);
+  const [errorCodigo, setErrorCodigo] = useState(false)
 
   const actualizarTwoState = (e) => {
     setTwofa({
@@ -41,7 +43,7 @@ export const Authentication = ({ setIsauthenticated }) => {
       code: twofa.code,
     };
 
-    console.log('data', Data);
+    //console.log('data', Data);
     let options = {
       headers: {
         'Content-Type': 'application/json',
@@ -57,11 +59,12 @@ export const Authentication = ({ setIsauthenticated }) => {
         options
       )
       .then((response) => {
-        console.log('respuesta del response', response);
+        //console.log('respuesta del response', response);
         if (response.status === 200 && response.data.verified) {
           setIsauthenticated(true);
         } else {
           //? que pasa?
+          setErrorCodigo(true)
         }
       });
   };
@@ -96,6 +99,9 @@ export const Authentication = ({ setIsauthenticated }) => {
               Send
             </button>
           </form>
+
+          {error ? <Error mensaje="el campo esta Vacio" /> : null }
+          {errorCodigo ? <Error mensaje="El codigo introducido es invalido" /> : null}
         </div>
       </main>
       <Footer />

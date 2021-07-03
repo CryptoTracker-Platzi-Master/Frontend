@@ -1,9 +1,9 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useState } from 'react';
 import './Modal.scss';
-import { ModalContext } from '../../Context/ModalContext';
 
 import { numberWithCommas } from '../../utils/numberWithCommas';
 import axios from 'axios';
+import {Error} from '../../components/Error';
 
 export const Modal = ({ setModal, title, currentCrypto }) => {
   const closeModal = () => {
@@ -22,7 +22,10 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
   //Crear el state del error
   const [error, guardarError] = useState(false);
 
-  const { setGuardarMoneda } = useContext(ModalContext);
+  //Mensaje moneda creada
+
+  const [Money, setMoneyCreated] = useState(false);
+
 
   //cuando el usuario escribe en el input
   const actualizarState = (e) => {
@@ -87,18 +90,20 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
       user_fk: usuario,
     };
 
-    console.log('token usuario', options);
+    //console.log('token usuario', options);
 
     axios
       .post('https://cryptotrackerapi.herokuapp.com/criptos/', Data, options)
       .then((response) => {
-        console.log('respuesta', response);
+          //console.log('respuesta', response.status);
+          setMoneyCreated(true)
+        
       })
       .catch((error) => {
-        console.log('error del post', error);
+        //console.log('error del post', error);
       });
 
-    console.log('Agregando crypto', Data);
+    //console.log('Agregando crypto', Data);
   };
 
   return (
@@ -193,6 +198,10 @@ export const Modal = ({ setModal, title, currentCrypto }) => {
                   Cancel
                 </button>
               </div>
+
+              {error ? <Error mensaje="Todos los campos son obligatorios" /> : null}
+
+              {Money ? <p className="addCoin">Moneda Agregada correctamente</p> : null}
             </form>
           </div>
         </div>
