@@ -32,8 +32,8 @@ export const team = [
     id: 4,
     name: 'Andres Ayala',
     rol: 'Backend Developer',
-    twitter: 'https://www.linkedin.com/in/cexperto/',
-    linkedin: 'https://twitter.com/icexperto',
+    twitter: 'https://twitter.com/icexperto',
+    linkedin: 'https://www.linkedin.com/in/cexperto/',
     img: imgAndres,
   },
 ];

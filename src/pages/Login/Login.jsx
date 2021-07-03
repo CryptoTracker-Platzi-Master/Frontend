@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import logoLogin from '../../assets/img/img-logo.png';
@@ -6,8 +6,7 @@ import './Login.scss';
 
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-
-import { LoginContext } from '../../Context/LoginContext';
+import { Error } from '../../components/Error';
 
 export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
   let history = useHistory();
@@ -18,8 +17,7 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
   });
 
   const [error, setError] = useState(false);
-
-  const { setGuardarLogin } = useContext(LoginContext);
+  const [ErrorLogin, setErrorLogin] = useState(false);
 
   //funcion que captura lo que el usuario escribe en los inputs
   const actualizarLoginState = (e) => {
@@ -42,34 +40,24 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
       return;
     }
     //enviar al context
-    console.log('login de login', login);
+
     // setGuardarLogin(login)
     axios
       .post('https://cryptotrackerapi.herokuapp.com/api/auth/login/', login)
       .then((response) => {
-        // console.log("status", response.status);
         if (response.status === 200) {
           setIsLogin(true);
           localStorage.setItem('ID_usuario', response.data.user_id);
           localStorage.setItem('Token_usuario', response.data.token);
-          console.log('objeto usuario', response.data);
-
+          localStorage.setItem('first_name', response.data.first_name);
           response.data.verified
             ? history.push('/dashboard')
             : history.push('/2fa');
-          // if (response.data.validated) {
-          //   setIsauthenticated(true);
-          // }
         }
       })
       .catch((error) => {
-        console.log('algo salio mal', error);
+        setErrorLogin(true);
       });
-
-    // setGuardarLogin(login);
-    // if (isauthenticated) {
-    //   history.push('/dashboard');
-    // }
   };
 
   return (
@@ -94,7 +82,7 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
             <input
               type='text'
               id='username-login'
-              placeholder='example@example.com'
+              placeholder='Tu Usuario'
               name='username'
               value={username}
               onChange={actualizarLoginState}
@@ -105,7 +93,7 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
               type='password'
               id='password'
               name='password'
-              placeholder='password'
+              placeholder='Tu Password'
               onChange={actualizarLoginState}
               value={password}
             />
@@ -114,9 +102,10 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
               Login
             </button>
           </form>
-          {error ? (
-            <p className='error'>El correo o la contraseña estan errados</p>
+          {ErrorLogin ? (
+            <Error mensaje='Usuario o Contraseña invalidos' />
           ) : null}
+          {error ? <Error mensaje='Todos los campos son obligatorios' /> : null}
         </div>
       </main>
       <Footer />

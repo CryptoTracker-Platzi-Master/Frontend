@@ -22,6 +22,9 @@ export const SignUp = ({ setIsLogin }) => {
   //State del error
   const [error, setError] = useState(false);
 
+  //Mensaje usuario Creado
+  const [repeatUser, setrepeatUser] = useState(false);
+
   //Captura lo ingresado en el input
   const actualizarState = (e) => {
     setRegistro({
@@ -61,22 +64,18 @@ export const SignUp = ({ setIsLogin }) => {
     });
 
     //Enviar al API
-    console.log('login de login', registro);
     // setGuardarLogin(login)
     axios
       .post('https://cryptotrackerapi.herokuapp.com/api/auth/signup/', registro)
       .then((response) => {
-        //console.log("status", response.status);
-        //console.log("data", response.data);
         localStorage.setItem('ID_usuario', response.data.user_id);
         localStorage.setItem('Token_usuario', response.data.token);
-        // setIsLogin(true);
         if (response.status === 200) {
-          history.push('login');
+          setTimeout(history.push('login'), 5000);
         }
       })
       .catch((error) => {
-        console.log('algo salio mal', error);
+        setrepeatUser(true);
       });
   };
 
@@ -123,7 +122,7 @@ export const SignUp = ({ setIsLogin }) => {
               type='email'
               id='email'
               name='email'
-              placeholder='example@example.com'
+              placeholder='Tu Email'
               onChange={actualizarState}
               value={email}
             />
@@ -154,6 +153,10 @@ export const SignUp = ({ setIsLogin }) => {
           </form>
           {error ? (
             <p className='error'>Todos los campos son obligatorios</p>
+          ) : null}
+
+          {repeatUser ? (
+            <p className='error'>Correo Repetido, por favor utiliza otro</p>
           ) : null}
         </div>
       </main>

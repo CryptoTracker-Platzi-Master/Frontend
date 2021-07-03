@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import imgPerfile from '../../assets/img/img-perfile.png';
 import './HeaderDashboard.scss';
-import { LoginContext } from '../../Context/LoginContext';
 
 export const HeaderDashboard = () => {
-  // const { login } = useContext(LoginContext);
+  let userName = localStorage.getItem('first_name');
 
-  // console.log('lo que deberia traer', login);
+  const CerrarSesion = () => {
+    localStorage.clear();
+  };
 
   return (
     <header className='header-dashboard'>
@@ -19,11 +20,14 @@ export const HeaderDashboard = () => {
         />
       </figure>
       <p className='header-dashboard--name-user'>
-        {/* Hi, <span>{login.email}</span> */}
+        Hi, <span>{userName}</span>
       </p>
       <nav className='header-dashboard__nav'>
         <Link to='/'>
-          <i className='fas fa-sign-out-alt header-dashboard__nav--logout'></i>
+          <i
+            onClick={CerrarSesion}
+            className='fas fa-sign-out-alt header-dashboard__nav--logout'
+          ></i>
         </Link>
       </nav>
     </header>
