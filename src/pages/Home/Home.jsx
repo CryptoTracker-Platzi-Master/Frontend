@@ -14,7 +14,7 @@ export const Home = () => {
       <main className='home'>
         <h1 className='home--title'>CryptoTracker</h1>
         <p className='home--description'>
-          CryptoTracker is a web application where you can track the top 10
+          CryptoTracker is a web application where you can track the top 20
           cryptocurrencies. Being able to keep your portfolio and know how
           healthy it is, also know if it is a good time to buy or sell!
         </p>
