@@ -8,7 +8,6 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Error } from '../../components/Error';
 
-
 export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
   let history = useHistory();
   //Crear el state del login
@@ -18,8 +17,7 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
   });
 
   const [error, setError] = useState(false);
-  const [ErrorLogin, setErrorLogin] = useState(false)
-
+  const [ErrorLogin, setErrorLogin] = useState(false);
 
   //funcion que captura lo que el usuario escribe en los inputs
   const actualizarLoginState = (e) => {
@@ -42,37 +40,24 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
       return;
     }
     //enviar al context
-    
+
     // setGuardarLogin(login)
     axios
       .post('https://cryptotrackerapi.herokuapp.com/api/auth/login/', login)
       .then((response) => {
-        // console.log("status", response.status);
         if (response.status === 200) {
           setIsLogin(true);
           localStorage.setItem('ID_usuario', response.data.user_id);
           localStorage.setItem('Token_usuario', response.data.token);
-          //console.log('objeto usuario', response.data);
-
-          localStorage.setItem("first_name", response.data.first_name)
-
+          localStorage.setItem('first_name', response.data.first_name);
           response.data.verified
             ? history.push('/dashboard')
             : history.push('/2fa');
-          // if (response.data.validated) {
-          //   setIsauthenticated(true);
-          // }
         }
       })
       .catch((error) => {
-        setErrorLogin(true)
-        //console.log('algo salio mal', error);
+        setErrorLogin(true);
       });
-
-    // setGuardarLogin(login);
-    // if (isauthenticated) {
-    //   history.push('/dashboard');
-    // }
   };
 
   return (
@@ -118,11 +103,9 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
             </button>
           </form>
           {ErrorLogin ? (
-            <Error mensaje="Usuario o Contraseña invalidos" /> 
+            <Error mensaje='Usuario o Contraseña invalidos' />
           ) : null}
-          {error ? (
-            <Error mensaje="Todos los campos son obligatorios" />
-          ) : null}
+          {error ? <Error mensaje='Todos los campos son obligatorios' /> : null}
         </div>
       </main>
       <Footer />
