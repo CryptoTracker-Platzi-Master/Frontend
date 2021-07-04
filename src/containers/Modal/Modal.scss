@@ -140,13 +140,14 @@
         }
 
         .addCoin{
-          margin-top: 44px;
           color: white;
-          background: green;
+          background: #3ad475;
           padding: 2rem;
           border-radius: 5px;
           font-size: 16px;
           font-weight: bold;
+          position: absolute;
+          top:-30px
         }
       }
     }

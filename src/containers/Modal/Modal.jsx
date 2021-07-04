@@ -23,7 +23,6 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
   const [error, guardarError] = useState(false);
 
   //Mensaje moneda creada
-
   const [Money, setMoneyCreated] = useState(false);
 
   //cuando el usuario escribe en el input
@@ -36,6 +35,14 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
 
   //Extraer los valores
   const { price, quantity, amount, expected, lost } = crypto;
+
+  //Eliminar mensaje de error
+  const ocultar = () =>{
+     setTimeout(() => {
+       guardarError(false);
+       setMoneyCreated(false)
+     },3000)
+  }
 
   const agregarCrypto = (e) => {
     e.preventDefault();
@@ -51,9 +58,8 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
       guardarError(true);
       return;
     }
-
-    //Eliminar mensaje de error
-    guardarError(false);
+     
+  
 
     //Reiniciar el form
     guardarCrypto({
@@ -189,7 +195,7 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
               />
 
               <div className='container-modal__modal--container-form--form--btns'>
-                <button type='submit' className='btn-add'>
+                <button type='submit' className='btn-add' onClick={ocultar}>
                   Add
                 </button>
                 <button
