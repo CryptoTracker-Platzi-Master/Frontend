@@ -5,10 +5,11 @@
 .error {
     color: white;
     text-align: center;
-    margin-top: 20px;
     font-weight: bold;
     font-size: 18px;
-    background: red;
+    background: #ff5b5c;
     padding: 1rem;
     border-radius: 5px;
+    position: absolute;
+    top: -14px;
 }
