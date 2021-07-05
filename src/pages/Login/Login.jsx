@@ -72,6 +72,7 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
           />
         </figure>
         <h2 className='login--title'>Login</h2>
+
         <div className='login__container-form'>
           <form
             className='login__container-form--form'
@@ -98,14 +99,16 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
               value={password}
             />
 
-            <button type='submit' className='button-login'>
+            <button
+              type='submit'
+              className='button-login'
+              // onClick={changeSpinner()}
+            >
               Login
             </button>
           </form>
-          {ErrorLogin ? (
-            <Error mensaje='Usuario o Contraseña invalidos' />
-          ) : null}
-          {error ? <Error mensaje='Todos los campos son obligatorios' /> : null}
+          {ErrorLogin && <Error mensaje='Usuario o Contraseña invalidos' />}
+          {error && <Error mensaje='Todos los campos son obligatorios' />}
         </div>
       </main>
       <Footer />
