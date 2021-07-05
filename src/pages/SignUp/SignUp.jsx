@@ -79,6 +79,13 @@ export const SignUp = ({ setIsLogin }) => {
       });
   };
 
+  //Eliminar mensaje de error
+  const hideMessageError = () => {
+    setTimeout(() => {
+      setError(false);
+      setrepeatUser(false);
+    }, 3000);
+  };
   return (
     <>
       <Header />
@@ -147,17 +154,17 @@ export const SignUp = ({ setIsLogin }) => {
               value={confirm}
             />
 
-            <button type='submit' className='button-signup'>
+            <button
+              type='submit'
+              className='button-signup'
+              onClick={hideMessageError}
+            >
               Sign Up
             </button>
           </form>
-          {error ? (
-            <p className='error'>Todos los campos son obligatorios</p>
-          ) : null}
+          {error && <p className='error'>all fields are required</p>}
 
-          {repeatUser ? (
-            <p className='error'>Correo Repetido, por favor utiliza otro</p>
-          ) : null}
+          {repeatUser && <p className='error'>existing mail, try another</p>}
         </div>
       </main>
       <Footer />

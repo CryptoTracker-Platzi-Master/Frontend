@@ -37,12 +37,12 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
   const { price, quantity, amount, expected, lost } = crypto;
 
   //Eliminar mensaje de error
-  const ocultar = () =>{
-     setTimeout(() => {
-       guardarError(false);
-       setMoneyCreated(false)
-     },3000)
-  }
+  const ocultar = () => {
+    setTimeout(() => {
+      guardarError(false);
+      setMoneyCreated(false);
+    }, 3000);
+  };
 
   const agregarCrypto = (e) => {
     e.preventDefault();
@@ -58,8 +58,6 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
       guardarError(true);
       return;
     }
-     
-  
 
     //Reiniciar el form
     guardarCrypto({
@@ -207,13 +205,9 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
                 </button>
               </div>
 
-              {error ? (
-                <Error mensaje='Todos los campos son obligatorios' />
-              ) : null}
+              {error && <Error mensaje='all fields are required' />}
 
-              {Money ? (
-                <p className='addCoin'>Moneda Agregada correctamente</p>
-              ) : null}
+              {Money && <p className='addCoin'>Currency Added correctly</p>}
             </form>
           </div>
         </div>
