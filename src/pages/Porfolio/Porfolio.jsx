@@ -55,12 +55,13 @@ export const Porfolio = () => {
             <span>300</span>{' '}
           </h4>
           <h4>
-            Total porfits: <span className='currency'>$</span>
+            Total profits: <span className='currency'>$</span>
             <span>300</span>
           </h4>
           <h4>
             Total Profits %:
             <span className='percentage'>300</span>
+            <span>%</span>
           </h4>
         </div>
         <div className='porfolio__wrap-cards'>

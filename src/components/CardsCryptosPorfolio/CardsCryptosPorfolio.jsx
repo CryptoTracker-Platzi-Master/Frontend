@@ -66,7 +66,7 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
         </div>
         <div className='porfolio__wrap-cards__card__description'>
           <h4>
-            Purchase price: <span>$</span>
+            Purchased price: <span>$</span>
             <span>{datacrypto.purchase_price}</span>
           </h4>
           <h4>
@@ -100,7 +100,7 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
           <div className='porfolio__wrap-cards__card__revenues--sell'>
             <h4>
               <i className='fas fa-long-arrow-alt-down icon-sell'></i>
-              sell price to loss
+              Sell price to loss
             </h4>
             <p>
               <span>$</span>{' '}

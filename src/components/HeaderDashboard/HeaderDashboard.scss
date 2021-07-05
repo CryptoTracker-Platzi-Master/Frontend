@@ -1,15 +1,22 @@
-@import "../../assets/scss/reset";
-@import "../../assets/scss/variables";
-@import "../../assets/scss/mixins";
+@import '../../assets/scss/reset';
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
 
 .header-dashboard {
   width: 100%;
   height: 60px;
   background-color: $color-dark-tertiary;
   display: flex;
-  // justify-content: space-between;
-  align-items: center;
-  position: relative;
+  justify-content: center;
+
+  &__wrap {
+    width: 100%;
+    max-width: 1024px;
+    min-width: 320px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
 
   &__container-img {
     width: 50px;

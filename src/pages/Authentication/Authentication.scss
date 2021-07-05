@@ -1,6 +1,6 @@
-@import "../../assets/scss/reset";
-@import "../../assets/scss/variables";
-@import "../../assets/scss/mixins";
+@import '../../assets/scss/reset';
+@import '../../assets/scss/variables';
+@import '../../assets/scss/mixins';
 
 .code-2fa {
   width: 90%;
@@ -73,6 +73,14 @@
         opacity: 0.7;
         color: $color-dark-primary;
       }
+    }
+
+    & .message-email {
+      transform: translateY(20px);
+      color: $color-text-dark;
+      font-family: $fontSecondary;
+      font-size: $sizeParagraphsMobile;
+      font-weight: 400;
     }
   }
 }
