@@ -12,24 +12,26 @@ export const HeaderDashboard = () => {
 
   return (
     <header className='header-dashboard'>
-      <figure className='header-dashboard__container-img'>
-        <img
-          className='header-dashboard__container-img--img'
-          src={imgPerfile}
-          alt='logo'
-        />
-      </figure>
-      <p className='header-dashboard--name-user'>
-        Hi, <span>{userName}</span>
-      </p>
-      <nav className='header-dashboard__nav'>
-        <Link to='/'>
-          <i
-            onClick={CerrarSesion}
-            className='fas fa-sign-out-alt header-dashboard__nav--logout'
-          ></i>
-        </Link>
-      </nav>
+      <div className='header-dashboard__wrap'>
+        <figure className='header-dashboard__container-img'>
+          <img
+            className='header-dashboard__container-img--img'
+            src={imgPerfile}
+            alt='logo'
+          />
+        </figure>
+        <p className='header-dashboard--name-user'>
+          Hi, <span>{userName}</span>
+        </p>
+        <nav className='header-dashboard__nav'>
+          <Link to='/'>
+            <i
+              onClick={CerrarSesion}
+              className='fas fa-sign-out-alt header-dashboard__nav--logout'
+            ></i>
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 };

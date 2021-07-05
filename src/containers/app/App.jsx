@@ -16,7 +16,7 @@ import '../../assets/css/App.css';
 export const App = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isauthenticated, setIsauthenticated] = useState(false);
-  const [spinner, setSpinner] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <LoginProvider>
@@ -28,9 +28,14 @@ export const App = () => {
             <Route
               exact
               path='/login'
-              render={(props) => <Login {...props} setIsLogin={setIsLogin} />}
-              spinner={spinner}
-              setSpinner={setSpinner}
+              render={(props) => (
+                <Login
+                  {...props}
+                  setIsLogin={setIsLogin}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
+              )}
             ></Route>
 
             <Route

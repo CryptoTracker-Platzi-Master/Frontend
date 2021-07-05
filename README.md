@@ -4,7 +4,7 @@ CryptoTracker is a web application that you can use to keep track of your invest
 
 ## Home
 
-In our Home you will find the navigation menu where you can log in or Sign Up depending on the case, description of the app and our team.
+In our Home you will find the navigation menu where you can log In or Sign Up depending on the case, description of the app and our team.
 <br/>
 <br/>
 
@@ -13,7 +13,7 @@ In our Home you will find the navigation menu where you can log in or Sign Up de
 
 ## Sign UP
 
-In our registration system does not require demaciados data, once you process your information you can have an account in our application and redirect you to make your login
+In our registration system does not require too much data, once you process your information you can have an account in our application and redirect you to make your login
 
 <img src='./src/assets/img-readme/sign-up.png' alt='image of the home'>
 <br/><br/>

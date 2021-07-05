@@ -129,7 +129,7 @@ export const SignUp = ({ setIsLogin }) => {
               type='email'
               id='email'
               name='email'
-              placeholder='Tu Email'
+              placeholder='Your Email'
               onChange={actualizarState}
               value={email}
             />

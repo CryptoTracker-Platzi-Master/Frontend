@@ -8,7 +8,15 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Error } from '../../components/Error';
 
-export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
+export const Login = ({
+  setIsLogin,
+  setIsauthenticated,
+  isauthenticated,
+  isLoading,
+  setIsLoading,
+}) => {
+  console.log(isLoading);
+
   let history = useHistory();
   //Crear el state del login
   const [login, setLogin] = useState({
@@ -37,27 +45,28 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
     //Validar
     if (username.trim() === '' || password.trim() === '') {
       setError(true);
-      return;
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    } else {
+      setIsLoading(true);
     }
     //enviar al context
-
     // setGuardarLogin(login)
     axios
       .post('https://cryptotrackerapi.herokuapp.com/api/auth/login/', login)
       .then((response) => {
         if (response.status === 200) {
-          setIsLogin(true);
           localStorage.setItem('ID_usuario', response.data.user_id);
           localStorage.setItem('Token_usuario', response.data.token);
           localStorage.setItem('first_name', response.data.first_name);
           response.data.verified
             ? history.push('/dashboard')
             : history.push('/2fa');
+          setIsLoading(false);
         }
       })
-      .catch((error) => {
-        setErrorLogin(true);
-      });
+      .catch((error) => {});
   };
 
   return (
@@ -72,44 +81,43 @@ export const Login = ({ setIsLogin, setIsauthenticated, isauthenticated }) => {
           />
         </figure>
         <h2 className='login--title'>Login</h2>
-
-        <div className='login__container-form'>
-          <form
-            className='login__container-form--form'
-            action='form-login'
-            onSubmit={submitLogin}
-          >
-            <label htmlFor='username-login'>Username</label>
-            <input
-              type='text'
-              id='username-login'
-              placeholder='Tu Usuario'
-              name='username'
-              value={username}
-              onChange={actualizarLoginState}
-            />
-
-            <label htmlFor='password'>Password</label>
-            <input
-              type='password'
-              id='password'
-              name='password'
-              placeholder='Tu Password'
-              onChange={actualizarLoginState}
-              value={password}
-            />
-
-            <button
-              type='submit'
-              className='button-login'
-              // onClick={changeSpinner()}
+        {isLoading ? (
+          <div className='loader'>Loading...</div>
+        ) : (
+          <div className='login__container-form'>
+            <form
+              className='login__container-form--form'
+              action='form-login'
+              onSubmit={submitLogin}
             >
-              Login
-            </button>
-          </form>
-          {ErrorLogin && <Error mensaje='Usuario o Contraseña invalidos' />}
-          {error && <Error mensaje='Todos los campos son obligatorios' />}
-        </div>
+              <label htmlFor='username-login'>Username</label>
+              <input
+                type='text'
+                id='username-login'
+                placeholder='Your User'
+                name='username'
+                value={username}
+                onChange={actualizarLoginState}
+              />
+
+              <label htmlFor='password'>Password</label>
+              <input
+                type='password'
+                id='password'
+                name='password'
+                placeholder='Your Password'
+                onChange={actualizarLoginState}
+                value={password}
+              />
+
+              <button type='submit' className='button-login'>
+                Login
+              </button>
+            </form>
+            {ErrorLogin && <Error mensaje='Usuario o Contraseña invalidos' />}
+            {error && <Error mensaje='All fields are required' />}
+          </div>
+        )}
       </main>
       <Footer />
     </>
