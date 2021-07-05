@@ -33,3 +33,27 @@ We have a two factor authentication to ensure that only you can enter your creat
 
 <img src='./src/assets/img-readme/2fa.png' alt='image of the home'>
 <br/><br/>
+
+# Dashboard
+
+when you have already echo login and validated with 2fa you can enter our dashboard where you will find listed the 20 cryptos with the largest market cap.
+<br/><br/>
+
+<img src='./src/assets/img-readme/dashboard.png' alt='image of the home'>
+<br/><br/>
+
+## Add cryptos to your portfolio
+
+Within the dashboard you will find that each cryptocurrency is in a card with the most essential information such as price, market cap and its variations in the last 24H, you will also find the "plus" icon that will allow you to open a modal and add the coin to your tracking portfolio.
+<br/><br/>
+
+<img src='./src/assets/img-readme/card.png' alt='image of the home'>
+<br/><br/>
+
+## Modal to add
+
+With the modal that is displayed in the card that is in the dashboard you can add this coin to your portfolio by completing the requested data all the data are mandatory. in expected gain and lost allowed will help you to the portfolio card give you the prices at which you must sell to come out with profits or lost as the case may be.
+<br/><br/>
+
+<img src='./src/assets/img-readme/modal-add.png' alt='image of the home'>
+<br/><br/>
