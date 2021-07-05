@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# CryptoTracker.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CryptoTracker is a web application that you can use to keep track of your investments in cryptocurrency, we have elistadas the top 20 of the cryptos with the largest Market Cap.
 
-## Available Scripts
+## Home
 
-In the project directory, you can run:
+In our Home you will find the navigation menu where you can log in or Sign Up depending on the case, description of the app and our team.
+<br/>
+<br/>
 
-### `yarn start`
+<img src='./src/assets/img-readme/home.png' alt='image of the home'>
+<br/><br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Sign UP
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In our registration system does not require demaciados data, once you process your information you can have an account in our application and redirect you to make your login
 
-### `yarn test`
+<img src='./src/assets/img-readme/sign-up.png' alt='image of the home'>
+<br/><br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Login
 
-### `yarn build`
+Once your registration has been successful, our application redirects you to this page so that you can make your login, with the data previously used.
+<br/><br/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src='./src/assets/img-readme/login.png' alt='image of the home'>
+<br/><br/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 2fa (two factor authentication )
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We have a two factor authentication to ensure that only you can enter your created account, this 6-digit code will reach your email registered in the application.
+<br/><br/>
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src='./src/assets/img-readme/2fa.png' alt='image of the home'>
+<br/><br/>

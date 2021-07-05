@@ -93,15 +93,17 @@ export const Authentication = ({ setIsauthenticated }) => {
               placeholder='Enter your 6-digit code'
               onChange={actualizarTwoState}
             />
+
             <button className='code-2fa__container-form--btn' type='submit'>
               Send
             </button>
           </form>
+          <p className='message-email'>
+            * To your email the code of 6 digits will be sent
+          </p>
 
-          {error ? <Error mensaje='el campo esta Vacio' /> : null}
-          {errorCodigo ? (
-            <Error mensaje='El codigo introducido es invalido' />
-          ) : null}
+          {error && <Error mensaje='el campo esta Vacio' />}
+          {errorCodigo && <Error mensaje='El codigo introducido es invalido' />}
         </div>
       </main>
       <Footer />

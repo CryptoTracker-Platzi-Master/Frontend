@@ -7,9 +7,16 @@
   height: 60px;
   background-color: $color-dark-tertiary;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
 
+  &__wrap {
+    width: 100%;
+    max-width: 1024px;
+    min-width: 320;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__container-img {
     width: 171px;
     height: 46px;
