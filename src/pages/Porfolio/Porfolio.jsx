@@ -10,7 +10,7 @@ import { CardsCryptosPorfolio } from '../../components/CardsCryptosPorfolio';
 
 import axios from 'axios';
 
-export const Porfolio = () => {
+export const Porfolio = ({ isLoading, setIsLoading }) => {
   const [datacryptos, setdataCrypto] = useState([]);
   const [cryptos, setCryptos] = useState([]);
 
@@ -26,15 +26,17 @@ export const Porfolio = () => {
 
   useEffect(() => {
     const obtenercryptos = async () => {
+      setIsLoading(true);
       const url = 'https://cryptotrackerapi.herokuapp.com/portfolio/';
 
       const datacryptos = await axios.get(url, options);
       setdataCrypto(datacryptos.data);
+      setIsLoading(false);
     };
     obtenercryptos();
-    getCryptos({ setCryptos });
+    getCryptos({ setCryptos, setIsLoading });
     const interval = setInterval(() => {
-      getCryptos({ setCryptos });
+      getCryptos({ setCryptos, setIsLoading });
     }, callIntervalToCryptos);
     return () => {
       clearInterval(interval);
@@ -56,13 +58,17 @@ export const Porfolio = () => {
           </h4>
         </div>
         <div className='porfolio__wrap-cards'>
-          {datacryptos.map((datacrypto, index) => (
-            <CardsCryptosPorfolio
-              key={index}
-              datacrypto={datacrypto}
-              cryptos={cryptos}
-            />
-          ))}
+          {isLoading ? (
+            <div class='loader'>Loading...</div>
+          ) : (
+            datacryptos.map((datacrypto, index) => (
+              <CardsCryptosPorfolio
+                key={index}
+                datacrypto={datacrypto}
+                cryptos={cryptos}
+              />
+            ))
+          )}
         </div>
       </main>
       <FooterDashboard />

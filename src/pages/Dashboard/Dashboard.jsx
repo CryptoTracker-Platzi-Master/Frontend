@@ -8,14 +8,14 @@ import './Dashboard.scss';
 import { HeaderDashboard } from '../../components/HeaderDashboard';
 import { FooterDashboard } from '../../components/FooterDashboard';
 
-export const Dashboard = () => {
+export const Dashboard = ({ isLoading, setIsLoading }) => {
   const [cryptos, setCryptos] = useState([]);
   const callIntervalToCryptos = 15000;
 
   useEffect(() => {
-    getCryptos({ setCryptos });
+    getCryptos({ setCryptos, setIsLoading });
     const interval = setInterval(() => {
-      getCryptos({ setCryptos });
+      getCryptos({ setCryptos, setIsLoading });
     }, callIntervalToCryptos);
     return () => {
       clearInterval(interval);
@@ -30,7 +30,11 @@ export const Dashboard = () => {
           My Porfolio
         </Link>
         <h2 className='dashboard--title'>All Cryptocurrencies</h2>
-        <CardCryptosDashboard cryptos={cryptos} />
+        {isLoading ? (
+          <div class='loader'>Loading...</div>
+        ) : (
+          <CardCryptosDashboard cryptos={cryptos} />
+        )}
       </main>
       <FooterDashboard />
     </>
