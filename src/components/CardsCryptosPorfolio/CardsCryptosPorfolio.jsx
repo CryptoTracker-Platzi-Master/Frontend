@@ -85,6 +85,15 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
             Accepted losses: <span>$</span>
             <span>{datacrypto.stop_loss}</span>
           </h4>
+          <h4>
+            Total Profit / loss: <span>$</span>
+            <span>
+              {(
+                (getPriceCoin() - datacrypto.purchase_price) *
+                datacrypto.cantity
+              ).toFixed(2)}
+            </span>
+          </h4>
         </div>
         <div className='porfolio__wrap-cards__card__revenues'>
           <div className='porfolio__wrap-cards__card__revenues--buy'>
@@ -94,7 +103,10 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
             </h4>
             <p>
               <span>$</span>{' '}
-              {(getPriceCoin() + datacrypto.take_profit).toFixed(3)}
+              {(
+                (datacrypto.amount_invested + datacrypto.take_profit) /
+                datacrypto.cantity
+              ).toFixed(2)}
             </p>
           </div>
           <div className='porfolio__wrap-cards__card__revenues--sell'>
@@ -104,7 +116,10 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
             </h4>
             <p>
               <span>$</span>{' '}
-              {(getPriceCoin() - datacrypto.stop_loss).toFixed(3)}
+              {(
+                (datacrypto.amount_invested - datacrypto.stop_loss) /
+                datacrypto.cantity
+              ).toFixed(2)}
             </p>
           </div>
         </div>

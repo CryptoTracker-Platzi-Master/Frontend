@@ -54,15 +54,6 @@ export const Porfolio = () => {
             Total investment: <span className='currency'>$</span>
             <span>300</span>{' '}
           </h4>
-          <h4>
-            Total profits: <span className='currency'>$</span>
-            <span>300</span>
-          </h4>
-          <h4>
-            Total Profits %:
-            <span className='percentage'>300</span>
-            <span>%</span>
-          </h4>
         </div>
         <div className='porfolio__wrap-cards'>
           {datacryptos.map((datacrypto, index) => (
