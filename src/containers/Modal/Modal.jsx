@@ -46,20 +46,7 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
 
   const agregarCrypto = (e) => {
     e.preventDefault();
-
-    //Validar campos llenos
-    if (
-      price.trim() === '' ||
-      quantity.trim() === '' ||
-      amount.trim() === '' ||
-      expected.trim() === '' ||
-      lost.trim() === ''
-    ) {
-      guardarError(true);
-      return;
-    }
-     
-  
+      
 
     //Reiniciar el form
     guardarCrypto({
@@ -70,8 +57,7 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
       lost: '',
     });
 
-    //Pasar datos al context
-
+    //Se extraen datos del LocalStorage
     let tokenUsuario = localStorage.getItem('Token_usuario');
 
     let options = {
@@ -79,10 +65,47 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         Authorization: 'Token ' + tokenUsuario,
-      },
+      }
     };
 
     let usuario = localStorage.getItem('ID_usuario');
+
+  
+//Se valida si se crea o se modifica la moneda
+  if(isEdit === true){
+
+    let DataPut = {
+      id_c:currentCrypto.id_c,
+      name:currentCrypto.name,
+      symbol:currentCrypto.symbol,
+      purchase_price: crypto.price,
+      cantity: crypto.quantity,
+      amount_invested: crypto.amount,
+      take_profit: crypto.expected,
+      stop_loss: crypto.lost,
+      user_fk:usuario
+    }
+
+    console.log("lo que envia al api desde el put", DataPut)
+
+    axios.put(`https://cryptotrackerapi.herokuapp.com/my-cripto/${currentCrypto.id_c}/`, DataPut, options)
+    .then(response =>{
+      console.log("respuesta del put", response)
+    })
+
+  }else {
+     //Validar campos llenos
+    if (
+      price.trim() === '' ||
+      quantity.trim() === '' ||
+      amount.trim() === '' ||
+      expected.trim() === '' ||
+      lost.trim() === '' 
+    ) {
+      guardarError(true);
+      return;
+    }
+
     let Data = {
       name: currentCrypto.name,
       symbol: currentCrypto.symbol,
@@ -93,17 +116,20 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
       amount_invested: crypto.amount,
       user_fk: usuario,
     };
+    console.log("lo que envia al api desde post", Data)
 
-    axios
-      .post('https://cryptotrackerapi.herokuapp.com/criptos/', Data, options)
-      .then((response) => {
-        setMoneyCreated(true);
-      })
-      .catch((error) => {});
-  };
+    axios.post('https://cryptotrackerapi.herokuapp.com/criptos/', Data, options)
+    .then((response) => {
+      console.log("respuesta del response del post", response)
+      setMoneyCreated(true);
+    })
+  }
+
+  
+};
 
   useEffect(() => {
-    if (isEdit) {
+    if (isEdit === true) {
       guardarCrypto({
         price: currentCrypto.purchase_price,
         quantity: currentCrypto.cantity,

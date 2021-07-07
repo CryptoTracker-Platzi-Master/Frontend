@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 import './CardsCryptosPorfolio.scss';
 
@@ -31,6 +32,49 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
 
     setModal(true);
   };
+
+const eliminarCrypto = async(e) => {
+  e.preventDefault()
+
+  const BASE_URL = `https://cryptotrackerapi.herokuapp.com/my-cripto/${datacrypto.id_c}/`;
+
+  let tokenUsuario = localStorage.getItem('Token_usuario');
+
+  let options = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'Token ' + tokenUsuario,
+    }
+  };
+
+  let usuario = parseInt(localStorage.getItem('ID_usuario'));
+
+  let dataDelete = {
+    id_c:datacrypto.id_c,
+    name: datacrypto.name,
+    symbol: datacrypto.symbol,
+    purchase_price: datacrypto.purchase_price,
+    take_profit: datacrypto.take_profit,
+    stop_loss: datacrypto.stop_loss,
+    cantity: datacrypto.cantity,
+    amount_invested: datacrypto.amount_invested,
+    able:0,
+    user_fk: usuario
+  };
+
+  console.log("respueta data delete", dataDelete)
+  
+  await axios.delete(BASE_URL, options, dataDelete)
+  .then(response => {
+    console.log("respuesta del delete", response)
+  })
+  
+  console.log("url api", BASE_URL)
+}
+
+
+
   return (
     <Fragment>
       <div className='porfolio__wrap-cards__card'>
@@ -46,6 +90,7 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
           type='button'
           className='porfolio__wrap-cards__card--btn-delete'
           aria-label='Button delete'
+          onClick={eliminarCrypto}
         >
           <i className='far fa-trash-alt'></i>
         </button>

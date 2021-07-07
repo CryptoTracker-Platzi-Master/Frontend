@@ -29,6 +29,7 @@ export const Porfolio = () => {
       const url = 'https://cryptotrackerapi.herokuapp.com/portfolio/';
 
       const datacryptos = await axios.get(url, options);
+      console.log("datos de las criptos", datacryptos)
       setdataCrypto(datacryptos.data);
     };
     obtenercryptos();
@@ -64,9 +65,9 @@ export const Porfolio = () => {
           </h4>
         </div>
         <div className='porfolio__wrap-cards'>
-          {datacryptos.map((datacrypto, index) => (
+          {datacryptos.map((datacrypto) => (
             <CardsCryptosPorfolio
-              key={index}
+              key={datacrypto.id_c}
               datacrypto={datacrypto}
               cryptos={cryptos}
             />
