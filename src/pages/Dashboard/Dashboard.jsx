@@ -10,7 +10,7 @@ import { FooterDashboard } from '../../components/FooterDashboard';
 
 export const Dashboard = ({ isLoading, setIsLoading }) => {
   const [cryptos, setCryptos] = useState([]);
-  const callIntervalToCryptos = 15000;
+  const callIntervalToCryptos = 600000;
 
   useEffect(() => {
     getCryptos({ setCryptos, setIsLoading });
