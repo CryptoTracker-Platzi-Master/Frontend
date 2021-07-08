@@ -12,8 +12,8 @@
 
   &--card {
     width: 90%;
-    min-width: 280px;
-    max-width: 320px;
+    min-width: 340px;
+    max-width: 340px;
     background-color: $color-dark-secondary;
     border-radius: 12px;
     padding: 16px;
@@ -63,6 +63,7 @@
 
         & span {
           color: $color-light-primary;
+          text-align: end;
         }
 
         & .currency,

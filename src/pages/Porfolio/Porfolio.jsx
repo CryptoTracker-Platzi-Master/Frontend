@@ -10,9 +10,8 @@ import { CardsCryptosPorfolio } from '../../components/CardsCryptosPorfolio';
 
 import axios from 'axios';
 
-export const Porfolio = ({ isLoading, setIsLoading }) => {
+export const Porfolio = ({ setIsLoading }) => {
   const [datacryptos, setdataCrypto] = useState([]);
-  const [deleteCrypto, setDeleteCrypto] = useState([]);
   const [cryptos, setCryptos] = useState([]);
 
   let tokenUsuario = localStorage.getItem('Token_usuario');
@@ -31,9 +30,7 @@ export const Porfolio = ({ isLoading, setIsLoading }) => {
       const url = 'https://cryptotrackerapi.herokuapp.com/portfolio/';
 
       const datacryptos = await axios.get(url, options);
-      console.log('datos de las criptos', datacryptos);
       setdataCrypto(datacryptos.data);
-      setDeleteCrypto(datacryptos.data);
       setIsLoading(false);
     };
     obtenercryptos();
@@ -44,7 +41,7 @@ export const Porfolio = ({ isLoading, setIsLoading }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [deleteCrypto]);
+  }, [datacryptos]);
 
   return (
     <>
@@ -66,8 +63,8 @@ export const Porfolio = ({ isLoading, setIsLoading }) => {
               key={datacrypto.id_c}
               datacrypto={datacrypto}
               cryptos={cryptos}
-              setDeleteCrypto={setDeleteCrypto}
-              deleteCrypto={deleteCrypto}
+              datacryptos={datacryptos}
+              setdataCrypto={setdataCrypto}
             />
           ))}
         </div>
