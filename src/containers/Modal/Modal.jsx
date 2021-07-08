@@ -172,7 +172,7 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
                 value={amount}
               />
 
-              <label htmlFor='expected-gain'>Expected gain</label>
+              <label htmlFor='expected-gain'>Expected profit</label>
               <input
                 type='number'
                 id='expected-gain'
@@ -182,7 +182,7 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
                 value={expected}
               />
 
-              <label htmlFor='lost-allowed'>Lost allowed</label>
+              <label htmlFor='lost-allowed'>Losses accepted</label>
               <input
                 type='number'
                 id='lost-allowed'

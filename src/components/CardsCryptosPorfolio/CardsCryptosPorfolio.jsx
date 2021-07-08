@@ -78,11 +78,11 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
             <span>{datacrypto.amount_invested}</span>
           </h4>
           <h4>
-            Expected gain: <span>$</span>
+            Expected profit: <span>$</span>
             <span>{datacrypto.take_profit}</span>
           </h4>
           <h4>
-            Accepted losses: <span>$</span>
+            Losses accepted: <span>$</span>
             <span>{datacrypto.stop_loss}</span>
           </h4>
           <h4>
