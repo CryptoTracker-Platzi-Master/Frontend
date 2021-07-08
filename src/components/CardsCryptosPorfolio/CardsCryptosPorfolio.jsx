@@ -1,11 +1,17 @@
 import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 import './CardsCryptosPorfolio.scss';
 
 import { Modal } from '../../containers/Modal';
 
-export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
+export const CardsCryptosPorfolio = ({
+  datacrypto,
+  cryptos,
+  deleteCrypto,
+  setDeleteCrypto,
+}) => {
   const [modal, setModal] = useState(false);
   const [currentCrypto, setCurrentCrypto] = useState(null);
   let coins = cryptos;
@@ -31,6 +37,54 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
 
     setModal(true);
   };
+
+  const removeCoin = (arr, coin) => {
+    let i = arr.indexOf(coin);
+    if (i !== -1) {
+      arr.splice(i, 1);
+    }
+    setDeleteCrypto(arr);
+  };
+
+  const eliminarCrypto = async (e) => {
+    e.preventDefault();
+
+    const BASE_URL = `https://cryptotrackerapi.herokuapp.com/my-cripto/${datacrypto.id_c}/`;
+
+    let tokenUsuario = localStorage.getItem('Token_usuario');
+
+    let options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        Authorization: 'Token ' + tokenUsuario,
+      },
+    };
+
+    let usuario = parseInt(localStorage.getItem('ID_usuario'));
+
+    let dataDelete = {
+      id_c: datacrypto.id_c,
+      name: datacrypto.name,
+      symbol: datacrypto.symbol,
+      purchase_price: datacrypto.purchase_price,
+      take_profit: datacrypto.take_profit,
+      stop_loss: datacrypto.stop_loss,
+      cantity: datacrypto.cantity,
+      amount_invested: datacrypto.amount_invested,
+      able: 0,
+      user_fk: usuario,
+    };
+
+    console.log('respueta data delete', dataDelete);
+
+    await axios.delete(BASE_URL, options, dataDelete).then((response) => {
+      console.log('respuesta del delete', response);
+    });
+
+    removeCoin(deleteCrypto, datacrypto.id_c);
+  };
+
   return (
     <Fragment>
       <div className='porfolio__wrap-cards__card'>
@@ -46,6 +100,7 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
           type='button'
           className='porfolio__wrap-cards__card--btn-delete'
           aria-label='Button delete'
+          onClick={eliminarCrypto}
         >
           <i className='far fa-trash-alt'></i>
         </button>
@@ -78,12 +133,21 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
             <span>{datacrypto.amount_invested}</span>
           </h4>
           <h4>
-            Expected gain: <span>$</span>
+            Expected profit: <span>$</span>
             <span>{datacrypto.take_profit}</span>
           </h4>
           <h4>
-            Accepted losses: <span>$</span>
+            Losses accepted: <span>$</span>
             <span>{datacrypto.stop_loss}</span>
+          </h4>
+          <h4>
+            Total Profit / loss: <span>$</span>
+            <span>
+              {(
+                (getPriceCoin() - datacrypto.purchase_price) *
+                datacrypto.cantity
+              ).toFixed(2)}
+            </span>
           </h4>
         </div>
         <div className='porfolio__wrap-cards__card__revenues'>
@@ -94,7 +158,10 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
             </h4>
             <p>
               <span>$</span>{' '}
-              {(getPriceCoin() + datacrypto.take_profit).toFixed(3)}
+              {(
+                (datacrypto.amount_invested + datacrypto.take_profit) /
+                datacrypto.cantity
+              ).toFixed(2)}
             </p>
           </div>
           <div className='porfolio__wrap-cards__card__revenues--sell'>
@@ -104,7 +171,10 @@ export const CardsCryptosPorfolio = ({ datacrypto, cryptos }) => {
             </h4>
             <p>
               <span>$</span>{' '}
-              {(getPriceCoin() - datacrypto.stop_loss).toFixed(3)}
+              {(
+                (datacrypto.amount_invested - datacrypto.stop_loss) /
+                datacrypto.cantity
+              ).toFixed(2)}
             </p>
           </div>
         </div>

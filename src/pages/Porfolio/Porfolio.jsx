@@ -10,8 +10,9 @@ import { CardsCryptosPorfolio } from '../../components/CardsCryptosPorfolio';
 
 import axios from 'axios';
 
-export const Porfolio = () => {
+export const Porfolio = ({ isLoading, setIsLoading }) => {
   const [datacryptos, setdataCrypto] = useState([]);
+  const [deleteCrypto, setDeleteCrypto] = useState([]);
   const [cryptos, setCryptos] = useState([]);
 
   let tokenUsuario = localStorage.getItem('Token_usuario');
@@ -22,24 +23,28 @@ export const Porfolio = () => {
     },
   };
 
-  const callIntervalToCryptos = 15000;
+  const callIntervalToCryptos = 600000;
 
   useEffect(() => {
     const obtenercryptos = async () => {
+      setIsLoading(true);
       const url = 'https://cryptotrackerapi.herokuapp.com/portfolio/';
 
       const datacryptos = await axios.get(url, options);
+      console.log('datos de las criptos', datacryptos);
       setdataCrypto(datacryptos.data);
+      setDeleteCrypto(datacryptos.data);
+      setIsLoading(false);
     };
     obtenercryptos();
-    getCryptos({ setCryptos });
+    getCryptos({ setCryptos, setIsLoading });
     const interval = setInterval(() => {
-      getCryptos({ setCryptos });
+      getCryptos({ setCryptos, setIsLoading });
     }, callIntervalToCryptos);
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [deleteCrypto]);
 
   return (
     <>
@@ -54,22 +59,15 @@ export const Porfolio = () => {
             Total investment: <span className='currency'>$</span>
             <span>300</span>{' '}
           </h4>
-          <h4>
-            Total profits: <span className='currency'>$</span>
-            <span>300</span>
-          </h4>
-          <h4>
-            Total Profits %:
-            <span className='percentage'>300</span>
-            <span>%</span>
-          </h4>
         </div>
         <div className='porfolio__wrap-cards'>
-          {datacryptos.map((datacrypto, index) => (
+          {datacryptos.map((datacrypto) => (
             <CardsCryptosPorfolio
-              key={index}
+              key={datacrypto.id_c}
               datacrypto={datacrypto}
               cryptos={cryptos}
+              setDeleteCrypto={setDeleteCrypto}
+              deleteCrypto={deleteCrypto}
             />
           ))}
         </div>

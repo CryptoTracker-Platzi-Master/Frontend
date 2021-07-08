@@ -59,8 +59,28 @@ export const App = () => {
               {isauthenticated && <Redirect to='/dashboard' />}
             </Route>
 
-            <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/porfolio' component={Porfolio} />
+            <Route
+              exact
+              path='/dashboard'
+              render={(props) => (
+                <Dashboard
+                  {...props}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
+              )}
+            />
+            <Route
+              exact
+              path='/porfolio'
+              render={(props) => (
+                <Porfolio
+                  {...props}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                />
+              )}
+            />
           </Switch>
         </BrowserRouter>
         {/* </ModalProvider> */}
