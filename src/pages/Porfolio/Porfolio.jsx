@@ -45,11 +45,12 @@ export const Porfolio = ({ setIsLoading }) => {
       clearInterval(interval);
     };
   }, [datacryptos]);
+  // console.log(datacryptos);/
 
   const sumInvested = (arr) => {
     let totalInvested = 0;
     arr
-      .map((invested) => invested.total_invested)
+      .map((invested) => invested.amount_invested)
       .map((inversion) => {
         const numberInvested = parseInt(inversion);
         totalInvested = numberInvested + totalInvested;
