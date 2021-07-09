@@ -64,7 +64,6 @@ export const SignUp = ({ setIsLogin }) => {
     });
 
     //Enviar al API
-    // setGuardarLogin(login)
     axios
       .post('https://cryptotrackerapi.herokuapp.com/api/auth/signup/', registro)
       .then((response) => {

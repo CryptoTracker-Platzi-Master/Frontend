@@ -10,10 +10,10 @@ import { CardsCryptosPorfolio } from '../../components/CardsCryptosPorfolio';
 
 import axios from 'axios';
 
-export const Porfolio = ({ isLoading, setIsLoading }) => {
+export const Porfolio = ({ setIsLoading }) => {
   const [datacryptos, setdataCrypto] = useState([]);
-  const [deleteCrypto, setDeleteCrypto] = useState([]);
   const [cryptos, setCryptos] = useState([]);
+  const [balance, setBalance] = useState(0);
 
   let tokenUsuario = localStorage.getItem('Token_usuario');
 
@@ -31,21 +31,32 @@ export const Porfolio = ({ isLoading, setIsLoading }) => {
       const url = 'https://cryptotrackerapi.herokuapp.com/portfolio/';
 
       const datacryptos = await axios.get(url, options);
-      console.log('datos de las criptos', datacryptos);
       setdataCrypto(datacryptos.data);
-      setDeleteCrypto(datacryptos.data);
       setIsLoading(false);
     };
     obtenercryptos();
     getCryptos({ setCryptos, setIsLoading });
+    sumInvested(datacryptos);
+
     const interval = setInterval(() => {
       getCryptos({ setCryptos, setIsLoading });
     }, callIntervalToCryptos);
     return () => {
       clearInterval(interval);
     };
-  }, [deleteCrypto]);
+  }, [datacryptos]);
+  // console.log(datacryptos);/
 
+  const sumInvested = (arr) => {
+    let totalInvested = 0;
+    arr
+      .map((invested) => invested.amount_invested)
+      .map((inversion) => {
+        const numberInvested = parseInt(inversion);
+        totalInvested = numberInvested + totalInvested;
+      });
+    setBalance(totalInvested);
+  };
   return (
     <>
       <HeaderDashboard />
@@ -56,8 +67,8 @@ export const Porfolio = ({ isLoading, setIsLoading }) => {
         <div className='porfolio__card-balance'>
           <h2 className='porfolio__card-balance--title'>Balance</h2>
           <h4>
-            Total investment: <span className='currency'>$</span>
-            <span>300</span>{' '}
+            Total investment: <span className='currency'>$ </span>
+            <span>{balance} USD</span>{' '}
           </h4>
         </div>
         <div className='porfolio__wrap-cards'>
@@ -66,8 +77,8 @@ export const Porfolio = ({ isLoading, setIsLoading }) => {
               key={datacrypto.id_c}
               datacrypto={datacrypto}
               cryptos={cryptos}
-              setDeleteCrypto={setDeleteCrypto}
-              deleteCrypto={deleteCrypto}
+              datacryptos={datacryptos}
+              setdataCrypto={setdataCrypto}
             />
           ))}
         </div>

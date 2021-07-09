@@ -9,8 +9,8 @@ import { Modal } from '../../containers/Modal';
 export const CardsCryptosPorfolio = ({
   datacrypto,
   cryptos,
-  deleteCrypto,
-  setDeleteCrypto,
+  datacryptos,
+  setdataCrypto,
 }) => {
   const [modal, setModal] = useState(false);
   const [currentCrypto, setCurrentCrypto] = useState(null);
@@ -43,7 +43,7 @@ export const CardsCryptosPorfolio = ({
     if (i !== -1) {
       arr.splice(i, 1);
     }
-    setDeleteCrypto(arr);
+    setdataCrypto(arr);
   };
 
   const eliminarCrypto = async (e) => {
@@ -78,11 +78,9 @@ export const CardsCryptosPorfolio = ({
 
     console.log('respueta data delete', dataDelete);
 
-    await axios.delete(BASE_URL, options, dataDelete).then((response) => {
-      console.log('respuesta del delete', response);
-    });
+    await axios.delete(BASE_URL, options, dataDelete).then((response) => {});
 
-    removeCoin(deleteCrypto, datacrypto.id_c);
+    removeCoin(datacryptos, datacrypto.id_c);
   };
 
   return (
@@ -122,7 +120,7 @@ export const CardsCryptosPorfolio = ({
         <div className='porfolio__wrap-cards__card__description'>
           <h4>
             Purchased price: <span>$</span>
-            <span>{datacrypto.purchase_price}</span>
+            <span>{datacrypto.purchase_price} USD</span>
           </h4>
           <h4>
             Quantity: <span>{datacrypto.cantity}</span>
@@ -130,15 +128,15 @@ export const CardsCryptosPorfolio = ({
           </h4>
           <h4>
             Amount invested: <span>$</span>
-            <span>{datacrypto.amount_invested}</span>
+            <span>{datacrypto.amount_invested} USD</span>
           </h4>
           <h4>
             Expected profit: <span>$</span>
-            <span>{datacrypto.take_profit}</span>
+            <span>{datacrypto.take_profit} USD</span>
           </h4>
           <h4>
             Losses accepted: <span>$</span>
-            <span>{datacrypto.stop_loss}</span>
+            <span>{datacrypto.stop_loss} USD</span>
           </h4>
           <h4>
             Total Profit / loss: <span>$</span>
@@ -146,7 +144,8 @@ export const CardsCryptosPorfolio = ({
               {(
                 (getPriceCoin() - datacrypto.purchase_price) *
                 datacrypto.cantity
-              ).toFixed(2)}
+              ).toFixed(2)}{' '}
+              USD
             </span>
           </h4>
         </div>
@@ -161,7 +160,8 @@ export const CardsCryptosPorfolio = ({
               {(
                 (datacrypto.amount_invested + datacrypto.take_profit) /
                 datacrypto.cantity
-              ).toFixed(2)}
+              ).toFixed(2)}{' '}
+              USD
             </p>
           </div>
           <div className='porfolio__wrap-cards__card__revenues--sell'>
@@ -174,7 +174,8 @@ export const CardsCryptosPorfolio = ({
               {(
                 (datacrypto.amount_invested - datacrypto.stop_loss) /
                 datacrypto.cantity
-              ).toFixed(2)}
+              ).toFixed(2)}{' '}
+              USD
             </p>
           </div>
         </div>

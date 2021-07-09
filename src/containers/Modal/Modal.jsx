@@ -83,8 +83,6 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
         user_fk: usuario,
       };
 
-      console.log('lo que envia al api desde el put', DataPut);
-
       axios
         .put(
           `https://cryptotrackerapi.herokuapp.com/my-cripto/${currentCrypto.id_c}/`,
@@ -117,7 +115,6 @@ export const Modal = ({ setModal, title, currentCrypto, isEdit }) => {
         amount_invested: crypto.amount,
         user_fk: usuario,
       };
-      console.log('lo que envia al api desde post', Data);
 
       axios
         .post('https://cryptotrackerapi.herokuapp.com/criptos/', Data, options)

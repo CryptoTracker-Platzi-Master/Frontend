@@ -31,7 +31,7 @@ export const Dashboard = ({ isLoading, setIsLoading }) => {
         </Link>
         <h2 className='dashboard--title'>All Cryptocurrencies</h2>
         {isLoading ? (
-          <div class='loader'>Loading...</div>
+          <div className='loader'>Loading...</div>
         ) : (
           <CardCryptosDashboard cryptos={cryptos} />
         )}

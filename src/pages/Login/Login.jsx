@@ -8,15 +8,7 @@ import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { Error } from '../../components/Error';
 
-export const Login = ({
-  setIsLogin,
-  setIsauthenticated,
-  isauthenticated,
-  isLoading,
-  setIsLoading,
-}) => {
-  console.log(isLoading);
-
+export const Login = ({ isLoading, setIsLoading }) => {
   let history = useHistory();
   //Crear el state del login
   const [login, setLogin] = useState({
@@ -52,7 +44,6 @@ export const Login = ({
       setIsLoading(true);
     }
     //enviar al context
-    // setGuardarLogin(login)
     axios
       .post('https://cryptotrackerapi.herokuapp.com/api/auth/login/', login)
       .then((response) => {

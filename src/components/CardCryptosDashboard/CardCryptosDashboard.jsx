@@ -47,17 +47,17 @@ export const CardCryptosDashboard = ({ cryptos }) => {
               Price: <span>{numberWithCommas(crypto.current_price)} USD</span>
             </h4>
             <h4>
-              Volume 24h:<span className='currency'>$</span>
-              <span>{numberWithCommas(crypto.market_cap_change_24h)}</span>
+              Vol. 24h:<span className='currency'>$</span>
+              <span>{numberWithCommas(crypto.market_cap_change_24h)} USD</span>
             </h4>
             <h4>
               Market Cap:<span className='currency'>$</span>
-              <span>{numberWithCommas(crypto.market_cap)}</span>
+              <span>{numberWithCommas(crypto.market_cap)} USD</span>
             </h4>
             <h4>
               24h %:{' '}
               <span className='percentage-24h'>
-                {crypto.price_change_percentage_24h}
+                {crypto.price_change_percentage_24h} USD
               </span>
             </h4>
           </div>
