@@ -78,9 +78,7 @@ export const CardsCryptosPorfolio = ({
 
     console.log('respueta data delete', dataDelete);
 
-    await axios.delete(BASE_URL, options, dataDelete).then((response) => {
-      console.log('respuesta del delete', response);
-    });
+    await axios.delete(BASE_URL, options, dataDelete).then((response) => {});
 
     removeCoin(datacryptos, datacrypto.id_c);
   };

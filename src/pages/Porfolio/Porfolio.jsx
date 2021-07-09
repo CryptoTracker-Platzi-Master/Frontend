@@ -13,6 +13,7 @@ import axios from 'axios';
 export const Porfolio = ({ setIsLoading }) => {
   const [datacryptos, setdataCrypto] = useState([]);
   const [cryptos, setCryptos] = useState([]);
+  const [balance, setBalance] = useState(0);
 
   let tokenUsuario = localStorage.getItem('Token_usuario');
 
@@ -35,6 +36,8 @@ export const Porfolio = ({ setIsLoading }) => {
     };
     obtenercryptos();
     getCryptos({ setCryptos, setIsLoading });
+    sumInvested(datacryptos);
+
     const interval = setInterval(() => {
       getCryptos({ setCryptos, setIsLoading });
     }, callIntervalToCryptos);
@@ -43,6 +46,16 @@ export const Porfolio = ({ setIsLoading }) => {
     };
   }, [datacryptos]);
 
+  const sumInvested = (arr) => {
+    let totalInvested = 0;
+    arr
+      .map((invested) => invested.total_invested)
+      .map((inversion) => {
+        const numberInvested = parseInt(inversion);
+        totalInvested = numberInvested + totalInvested;
+      });
+    setBalance(totalInvested);
+  };
   return (
     <>
       <HeaderDashboard />
@@ -53,8 +66,8 @@ export const Porfolio = ({ setIsLoading }) => {
         <div className='porfolio__card-balance'>
           <h2 className='porfolio__card-balance--title'>Balance</h2>
           <h4>
-            Total investment: <span className='currency'>$</span>
-            <span>300</span>{' '}
+            Total investment: <span className='currency'>$ </span>
+            <span>{balance} USD</span>{' '}
           </h4>
         </div>
         <div className='porfolio__wrap-cards'>
